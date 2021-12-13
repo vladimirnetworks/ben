@@ -50,7 +50,7 @@ function hname()
 
     //return strtolower(preg_replace("!^(www\.)!i", "", $_SERVER['HTTP_HOST']));
 
-    preg_match('!^(.*?)(?=$|\:)!',$_SERVER['HTTP_HOST'],$m);
+    preg_match('!^(.*?)(?=$|\:)!',request()->getHttpHost(),$m);
     #preg_match('!^(.*?)(?=$|\:)!',"x",$m);
     
     return $m[1];
@@ -61,6 +61,14 @@ function domain_id() {
     $domain = domain::whereDomain(hname())->first();
     return $domain->id;
 }
+
+
+function domain_param() {
+    $domain = domain::whereDomain(hname())->first();
+    
+    return $domain;
+}
+
 
 function fiximgurl($imgurl, $base)
 {

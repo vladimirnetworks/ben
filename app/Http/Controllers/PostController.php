@@ -12,9 +12,29 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($page=1)
     {
-        $posts = Post::orderBy('id','DESC')->paginate(10, ['*'], 'page', $request->page);
+        $posts = Post::whereDomainId(domain_id())->orderBy('id','DESC')->paginate(2, ['*'], 'page', $page);
+       
+     
+        return view("blogs.index",["posts"=>$posts]);
+    }
+
+    public function cat($cat,$page=1)
+    {
+
+        dd(domain_param()->cats_decoded);
+
+        /*
+
+        cat1 => aa,bb,cc,dd,ee
+        cat2 => aa,bb,cc,dd,ee
+        cat3 => aa,bb,cc,dd
+
+
+        */
+
+        $posts = Post::whereDomainId(domain_id())->orderBy('id','DESC')->paginate(2, ['*'], 'page', $page);   
         return view("blogs.index",["posts"=>$posts]);
     }
 
@@ -45,9 +65,9 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($url,post $post)
     {
-       // return view("blogs.index");
+        return view("blogs.post",["post"=>$post]);
     }
 
     /**

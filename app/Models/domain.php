@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class domain extends Model
 {
     use HasFactory;
+
+
+    public function getCatsDecodedAttribute()
+    {
+
+       
+     return json_decode($this->cats,true);
+    }
+
+    protected $appends = ['cats_decoded'];
+
+
 }

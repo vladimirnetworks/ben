@@ -19,9 +19,14 @@ Route::get('/', function () {
     return "main";
 });
 
+
+
 } else {
 
-    Route::get('/',"App\Http\Controllers\PostController@index");  
+    Route::get('/',"App\Http\Controllers\PostController@index"); 
+    Route::get('/index/{page}',"App\Http\Controllers\PostController@index");  
+    Route::get('/cat/{cat}/{page?}',"App\Http\Controllers\PostController@cat");
+    Route::get('/post/{url}-{post}.html', "App\Http\Controllers\PostController@show")->where('url','[a-zA-z0-9-]+');
 
 }
 
