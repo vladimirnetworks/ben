@@ -4,31 +4,66 @@
 <head>
   <meta name="description" content="" />
   <meta charset="utf-8">
-  <title></title>
+  <title>@if (isset($pageTitle)) {{$pageTitle}} @else benham.ir @endif</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="">
+
+
+  <link rel="stylesheet" href="/bs/bootstrap.min.css">
+
+
+  <script src="/jquery/jquery.min.js"></script>
+
+  <script src="/bs/bootstrap.min.js"></script>
+
+  <style>
+    .main {
+      direction: rtl;
+      text-align: right;
+    }
+
+    body {
+      background-color: white;
+    }
+
+    .padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+  </style>
 
 </head>
 
+
 <body>
-  
-<div class="container">
+
+  <div class="main">
 
 
-@foreach (domain_param()->cats_decoded as $k => $cat)
+    <div class="p-4 p-md-5 mb-4 text-white bg-dark" style="direction:rtl">
+      <a href="/">home</a>
+      @foreach (domain_param()->cats_decoded as $k => $cat)
+      <a href="/cat/{{$k}}/">{{$k}}</a>
+      @endforeach
+    </div>
 
 
-<a href="/cat/{{array_key_first($cat)}}/">{{array_key_first($cat)}}</a>
+    @yield("main")
 
 
-@endforeach
-<hr>
 
 
- @yield("main")
-</div>
+
+
+
+
+    <div class="p-4 p-md-5 mb-4 text-white bg-dark">
+      footer
+      </div>
+  </div>
+
 
 
 
 </body>
+
 </html>

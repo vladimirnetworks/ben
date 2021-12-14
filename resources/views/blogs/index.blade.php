@@ -2,18 +2,22 @@
 
 @section('main')
 
-
-blog index
-
-
 @foreach($posts as $post)
 
-<div>
-    <h1>
-       <a href="/post/aa-a-a-{{$post->id}}.html">{{$post->title}}</a>
-    </h1>
+<div class="rounded bg-white m-3 ">
 
-    {{$post->text}}
+
+    <div class="border-bottom row py-3 ">
+
+     <div class="col-4 col-md-2 p-1">
+        <a href="/post/{{$post->url}}-{{$post->id}}.html"> <img style="width:100%;" src="https://cdn01.zoomit.ir/2021/8/samsung-galaxy-z-fold-3-playing-game-216x144.jpg"/></a>
+    </div>
+
+    <div class="col-8 p-1">
+       <a class="text-dark font-weight-bold" href="/post/{{$post->url}}-{{$post->id}}.html">{{$post->title}}</a>
+    </div>
+    
+    </div>
 
 </div>
 

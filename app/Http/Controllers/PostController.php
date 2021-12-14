@@ -12,30 +12,26 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page=1)
+    public function index($page = 1)
     {
-        $posts = Post::whereDomainId(domain_id())->orderBy('id','DESC')->paginate(2, ['*'], 'page', $page);
-       
-     
-        return view("blogs.index",["posts"=>$posts]);
+        $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
+
+
+        return view("blogs.index", ["posts" => $posts,"pageTitle"=>domain_param()->title]);
     }
 
-    public function cat($cat,$page=1)
+    public function cat($cat, $page = 1)
     {
 
-        dd(domain_param()->cats_decoded);
-
-        /*
-
-        cat1 => aa,bb,cc,dd,ee
-        cat2 => aa,bb,cc,dd,ee
-        cat3 => aa,bb,cc,dd
-
-
-        */
-
-        $posts = Post::whereDomainId(domain_id())->orderBy('id','DESC')->paginate(2, ['*'], 'page', $page);   
-        return view("blogs.index",["posts"=>$posts]);
+        $cats = domain_param()->cats_decoded;
+        $keys = array_map("trim", explode(",", $cats[$cat]));
+        $posts = $posts = Post::whereDomainId(domain_id())->whereRaw(" MATCH(`title`) AGAINST (? IN BOOLEAN MODE) ", implode(" ", $keys))->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
+        
+        if (isset($cats[$cat])) {
+            $pageTitle = $cat;
+        }
+        
+        return view("blogs.index", ["posts" => $posts,"pageTitle"=>$pageTitle]);
     }
 
     /**
@@ -45,7 +41,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $posts = Post::create2(["domain_id"=>2,"url"=>"aa-bb","title"=>"aaa","text"=>"zzzz"]);
+        $posts = Post::create2(["domain_id" => 2, "url" => "aa-bb", "title" => "aaa", "text" => "zzzz"]);
     }
 
     /**
@@ -65,9 +61,9 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($url,post $post)
+    public function show($url, post $post)
     {
-        return view("blogs.post",["post"=>$post]);
+        return view("blogs.post", ["post" => $post,"pageTitle"=>$post->title]);
     }
 
     /**
