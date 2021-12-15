@@ -13,7 +13,8 @@ class post extends Model
         'domain_id',
         'url',
         'title',
-        'text'
+        'text',
+        'tiny_text'
     ];
 
     public static function create2($inp) {
@@ -23,5 +24,23 @@ class post extends Model
         return post::create($inp);
 
     }
+
+
+    public function getCaptionAttribute()
+    {
+        $ret = "";
+        if (isset($this->tiny_text) && $this->tiny_text != null) {
+            $ret  = $this->tiny_text;
+        } else {
+
+            $ret = mb_substr(trim(strip_tags($this->text)),0,70,'UTF-8')." ...";
+          
+        }
+
+        return $ret;
+    }
+
+    protected $appends = ['caption'];
+
 
 }

@@ -3,12 +3,12 @@
 @section('main')
 
 
-<div>
-    <h1>
+<div class="m-1">
+    <h1 class="h2">
         {{$post->title}}
     </h1>
 
-    {{$post->text}}
+   <div class="m-2"> {{$post->text}} </div>
 
 </div>
 
