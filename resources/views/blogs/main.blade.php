@@ -33,6 +33,14 @@
 a:hover {
   text-decoration: none;
 }
+
+.top {
+  direction:rtl
+}
+
+.top a , .top a:visited {
+ display:inline-block
+}
   </style>
 
 </head>
@@ -43,7 +51,7 @@ a:hover {
   <div class="main">
 
 
-    <div class="p-4 p-md-5 mb-4 text-white bg-dark" style="direction:rtl">
+    <div class="p-4 p-md-5 mb-4 text-white bg-dark top" >
       <a href="/">home</a>
       @foreach (domain_param()->cats_decoded as $k => $cat)
       <a href="/cat/{{$k}}/">{{$k}}</a>

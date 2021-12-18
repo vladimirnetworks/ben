@@ -17,7 +17,11 @@ class PostController extends Controller
         $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
 
 
-        return view("blogs.index", ["posts" => $posts,"pageTitle"=>domain_param()->title]);
+        return view("blogs.index", ["groups" => [
+            ["title"=>"a" , "posts"=>$posts],
+            ["title"=>"b" , "posts"=>$posts],
+            ["title"=>"c" , "posts"=>$posts]
+        ],"pageTitle"=>domain_param()->title]);
     }
 
     public function cat($cat, $page = 1)
@@ -63,7 +67,11 @@ class PostController extends Controller
      */
     public function show($url, post $post)
     {
-        return view("blogs.post", ["post" => $post,"pageTitle"=>$post->title]);
+
+
+        $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', 0);
+
+        return view("blogs.post", ["post" => $post,"pageTitle"=>$post->title,"related"=>$posts]);
     }
 
     /**
