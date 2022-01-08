@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-if (hname() == 'benham2.ir') {
+if (hname() == 'benham2.ir' || hname() == 'www.benham2.ir') {
 
 Route::get('/', function () {
     return "main";
