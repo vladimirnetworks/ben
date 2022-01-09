@@ -43,4 +43,11 @@ class post extends Model
     protected $appends = ['caption'];
 
 
+
+    public function domain()
+    {
+        return $this->belongsTo(domain::class);
+    }
+
+
 }
