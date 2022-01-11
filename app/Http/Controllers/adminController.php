@@ -51,4 +51,19 @@ class adminController extends Controller
 
         return ["data" => $s1];
     }
+
+
+
+    public function showpost($domain_id,$post_id)
+    {
+        $posts = Post::where([
+
+            ["domain_id",'=',$domain_id]
+            ,
+            ["id","=",$post_id]
+
+        ])->first();
+
+        return ["data"=>$posts];
+    }
 }

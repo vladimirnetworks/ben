@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('admin/search/{query}',"App\Http\Controllers\adminController@bigsearch");
-
+Route::get('admin/post/{domain_id}/{post_id}',"App\Http\Controllers\adminController@showpost");
 
 
 Route::get('/post',"App\Http\Controllers\PostController@create");
