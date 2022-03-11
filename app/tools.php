@@ -58,7 +58,11 @@ function hname()
 
 
 function domain_id() {
-    $domain = domain::whereDomain(hname())->first();
+    return getDomainIdByName(hname());
+}
+
+function getDomainIdByName($name) {
+    $domain = domain::whereDomain($name)->first();
     return $domain->id;
 }
 
