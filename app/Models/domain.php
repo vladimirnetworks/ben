@@ -10,6 +10,14 @@ class domain extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'domain',
+        'title',
+        'cats',
+
+    ];
+
+
     public function getCatsDecodedAttribute()
     {
 

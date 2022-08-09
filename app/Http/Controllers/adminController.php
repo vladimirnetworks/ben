@@ -17,6 +17,7 @@ class adminController extends Controller
     public function regdomain(Request $req)
     {
         if (getDomainIdByName($req->domain) < 0) {
+            domain::create(["domain"=>$req->domain,"title"=>$req->domain]);
             return ["status"=>"ok"];
         } else {
             return ["status"=>"fail"];
