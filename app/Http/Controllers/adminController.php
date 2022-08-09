@@ -9,10 +9,41 @@ use Illuminate\Http\Request;
 class adminController extends Controller
 {
     //
+    public function checkdomain($query)
+    {
+      return ["status"=>(getDomainIdByName($query))];
+    }
+
+    public function regdomain(Request $req)
+    {
+        if (getDomainIdByName($req->domain) < 0) {
+            return ["status"=>"ok"];
+        } else {
+            return ["status"=>"fail"];
+        }
+     
+    }
+
+    
     public function bigsearch($query)
     {
 
         $s1 = [];
+
+        if (substr($query,0,5) == "site:") {
+           $blogid = getDomainIdByName(str_replace("site:","",$query));
+
+           if (isset($blogid) && $blogid > 0) {
+           $posts = post::where('domain_id', '=', $blogid)->orderBy('id','DESC')->get();
+
+       if (isset($posts) && count($posts) > 0) {
+           foreach ($posts as $post) {
+               $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
+           }
+       }
+    }
+
+        }
 
         if (isset($query) && trim($query) != '') {
 
@@ -30,7 +61,7 @@ class adminController extends Controller
 
             if (isset($domains) && count($domains) > 0) {
                 foreach ($domains as $domain) {
-                    $s1[] = ['type' => "domain", "data" => ["domain"=>$domain->domain,"domain_id"=>$domain->id], "title" => $domain->domain];
+                    $s1[] = ['type' => "domain", "data" => ["domain" => $domain->domain, "domain_id" => $domain->id], "title" => $domain->domain];
                 }
             }
 
@@ -53,28 +84,39 @@ class adminController extends Controller
     }
 
 
-
-    public function showpost($domain,$post_id)
+    public function showposts($domain)
     {
         $posts = Post::where([
 
-            ["domain_id",'=',getDomainIdByName($domain)]
-            ,
-            ["id","=",$post_id]
+            ["domain_id", '=', getDomainIdByName($domain)]
+         
 
         ])->first();
 
-        return ["data"=>$posts];
+        return ["dataz" => $posts];
     }
 
 
-    public function updatepost(Request $req , $domain,$post_id)
+
+    public function showpost($domain, $post_id)
+    {
+        $posts = Post::where([
+
+            ["domain_id", '=', getDomainIdByName($domain)],
+            ["id", "=", $post_id]
+
+        ])->first();
+
+        return ["data" => $posts];
+    }
+
+
+    public function updatepost(Request $req, $domain, $post_id)
     {
         $post = Post::where([
 
-            ["domain_id",'=',getDomainIdByName($domain)]
-            ,
-            ["id","=",$post_id]
+            ["domain_id", '=', getDomainIdByName($domain)],
+            ["id", "=", $post_id]
 
         ])->first();
 
@@ -82,14 +124,14 @@ class adminController extends Controller
         $post->tiny_text = $req->tiny_text;
         $post->text = $req->text;
         $post->url = $req->url;
-      
+
         $post->save();
 
-        return ["data"=>$post];
+        return ["data" => $post];
     }
 
 
-    public function addnewpost(Request $req , $domain)
+    public function addnewpost(Request $req, $domain)
     {
 
         $post = new Post();
@@ -99,20 +141,19 @@ class adminController extends Controller
         $post->tiny_text = $req->tiny_text;
         $post->text = $req->text;
         $post->url = $req->url;
-      
+
         $post->save();
 
-        return ["data"=>$post];
+        return ["data" => $post];
     }
 
-    function deletepost(Request $req , $domain,$post_id) {
+    function deletepost(Request $req, $domain, $post_id)
+    {
         return $post = Post::where([
 
-            ["domain_id",'=',getDomainIdByName($domain)]
-            ,
-            ["id","=",$post_id]
+            ["domain_id", '=', getDomainIdByName($domain)],
+            ["id", "=", $post_id]
 
         ])->delete();
     }
-
 }

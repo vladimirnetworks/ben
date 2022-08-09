@@ -63,7 +63,11 @@ function domain_id() {
 
 function getDomainIdByName($name) {
     $domain = domain::whereDomain($name)->first();
+    if (isset($domain) && isset($domain->id)) {
     return $domain->id;
+    } else {
+        return -1;
+    }
 }
 
 

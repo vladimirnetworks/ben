@@ -20,11 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('admin/search/{query}',"App\Http\Controllers\adminController@bigsearch");
 
+Route::get('admin/checkdomain/{query}',"App\Http\Controllers\adminController@checkdomain");
+Route::post('admin/regdomain',"App\Http\Controllers\adminController@regdomain");
+
 
 Route::post('admin/post/{domain}/new',"App\Http\Controllers\adminController@addnewpost");
 Route::get('admin/post/{domain}/{post_id}',"App\Http\Controllers\adminController@showpost");
 Route::put('admin/post/{domain}/{post_id}',"App\Http\Controllers\adminController@updatepost");
 Route::delete('admin/post/{domain}/{post_id}',"App\Http\Controllers\adminController@deletepost");
+
+
+
 
 
 
