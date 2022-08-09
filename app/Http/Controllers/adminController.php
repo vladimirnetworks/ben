@@ -5,45 +5,88 @@ namespace App\Http\Controllers;
 use App\Models\domain;
 use App\Models\post;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\PostDec;
 
 class adminController extends Controller
 {
     //
     public function checkdomain($query)
     {
-      return ["status"=>(getDomainIdByName($query))];
+        return ["status" => (getDomainIdByName($query))];
+    }
+    public function domainconf($query)
+    {
+
+
+        $dom = domain::whereId(getDomainIdByName($query))->first();
+
+
+        return [
+            "title" => $dom->title,
+            "cats" => $dom->cats
+        ];
+    }
+    public function deletedomain($query)
+    {
+
+        $dom = domain::whereId(getDomainIdByName($query))->first();
+        post::where(["domain_id"=>$dom->id])->delete();
+        $dom->delete();
+        return $dom->id;
+
+    }
+
+    public function domainsetconf(Request $req, $query)
+    {
+        $dom = domain::whereId(getDomainIdByName($query))->first();
+
+        $dom->title = $req->title;
+        $dom->cats = $req->cat;
+        $dom->save();
+
+        return (["status" => "ok"]);
     }
 
     public function regdomain(Request $req)
     {
         if (getDomainIdByName($req->domain) < 0) {
-            domain::create(["domain"=>$req->domain,"title"=>$req->domain]);
-            return ["status"=>"ok"];
+            domain::create(["domain" => $req->domain, "title" => $req->domain]);
+            return ["status" => "ok"];
         } else {
-            return ["status"=>"fail"];
+            return ["status" => "fail"];
         }
-     
     }
 
-    
+
     public function bigsearch($query)
     {
 
         $s1 = [];
 
-        if (substr($query,0,5) == "site:") {
-           $blogid = getDomainIdByName(str_replace("site:","",$query));
+        if (substr($query, 0, 5) == "site:") {
+            $blogid = getDomainIdByName(str_replace("site:", "", $query));
 
-           if (isset($blogid) && $blogid > 0) {
-           $posts = post::where('domain_id', '=', $blogid)->orderBy('id','DESC')->get();
+            if (isset($blogid) && $blogid > 0) {
+                $posts = post::where('domain_id', '=', $blogid)->orderBy('id', 'DESC')->get();
 
-       if (isset($posts) && count($posts) > 0) {
-           foreach ($posts as $post) {
-               $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
-           }
-       }
-    }
+                if (isset($posts) && count($posts) > 0) {
+                    foreach ($posts as $post) {
+                        $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
+                    }
+                }
+            }
+        }
 
+        if (isset($query) && trim($query) == 'allblogs') {
+            $domains = domain::orderBy('id', 'DESC')->get();
+
+            if (isset($domains) && count($domains) > 0) {
+                foreach ($domains as $domain) {
+                    $s1[] = ['type' => "domain", "data" => ["domain" => $domain->domain, "domain_id" => $domain->id], "title" => $domain->domain];
+                }
+            }
+
+            
         }
 
         if (isset($query) && trim($query) != '') {
@@ -90,7 +133,7 @@ class adminController extends Controller
         $posts = Post::where([
 
             ["domain_id", '=', getDomainIdByName($domain)]
-         
+
 
         ])->first();
 

@@ -23,6 +23,10 @@ Route::get('admin/search/{query}',"App\Http\Controllers\adminController@bigsearc
 Route::get('admin/checkdomain/{query}',"App\Http\Controllers\adminController@checkdomain");
 Route::post('admin/regdomain',"App\Http\Controllers\adminController@regdomain");
 
+Route::get('admin/domain/{domain}',"App\Http\Controllers\adminController@domainconf");
+Route::delete('admin/domain/{domain}',"App\Http\Controllers\adminController@deletedomain");
+Route::post('admin/domain/{domain}',"App\Http\Controllers\adminController@domainsetconf");
+
 
 Route::post('admin/post/{domain}/new',"App\Http\Controllers\adminController@addnewpost");
 Route::get('admin/post/{domain}/{post_id}',"App\Http\Controllers\adminController@showpost");
