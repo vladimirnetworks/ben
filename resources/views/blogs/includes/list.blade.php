@@ -6,7 +6,7 @@
        
         <div class="col-4 col-md-4 p-1">
             <a href="/post/{{$post->url}}-{{$post->id}}.html"> <img style="width:100%;"
-                    src="https://cdn01.zoomit.ir/2021/8/samsung-galaxy-z-fold-3-playing-game-216x144.jpg" /></a>
+                    src="{{$post->thumb}}" /></a>
         </div>
 
         <div class="col-8 p-1">

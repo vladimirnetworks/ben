@@ -15,6 +15,8 @@ class post extends Model
         'title',
         'text',
         'tiny_text',
+        'thumb',
+        'tags',
         'id'
     ];
 

@@ -20,6 +20,20 @@ class adminController extends Controller
 
         foreach ($x[2]['data'] as $h) {
           
+
+
+        preg_match_all('!src="(.*?)"!',$h['text'],$m);
+        
+        
+
+
+        if (preg_match("!^[0-9]+$!",$h['thumb'])) {
+            $h['thumb'] = $m[1][$h['thumb']];
+        }
+
+
+     
+
             post::create([
                 "id" => $h['postid'],
                 "domain_id" => $h['blogid'],
@@ -27,7 +41,8 @@ class adminController extends Controller
                 "text" => $h['text'],
                 "thumb" => $h['thumb'],
                 "tiny_text" => $h['title'],
-                "url" => $h['url']
+                "url" => $h['url'],
+                "tags" => $h['keysearch']
             ]);
             
         }

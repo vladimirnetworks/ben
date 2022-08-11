@@ -76,7 +76,7 @@ class PostController extends start
       # dd($cats['لیپوساکشن']);
 
         $keys = array_map("trim", explode(",", $cats[$cat]));
-        $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
+        $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
        
         if (isset($cats[$cat])) {
             $pageTitle = $cat;
@@ -109,16 +109,18 @@ class PostController extends start
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($postid)
+    public function show($url,$id)
     {
 
 
         
-        $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', 0);
+        $posts = Post::whereDomainId($this->domain()->id)->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', 0);
 
-        $post = $this->domain()->posts->whereId($postid);
+        $post = $this->domain()->posts->whereId($id)->get()[0];
 
-        dd($post);
+       
+       // dd(DB::getQueryLog());
+      
 
         return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "related" => $posts]);
     }
