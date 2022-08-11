@@ -1,20 +1,21 @@
 <?php
 
+
 use App\Models\domain;
 
-function urlize($i) {
+function urlize($i)
+{
 
     $allow[] = 'a-z';
     $allow[] = 'A-Z';
     $allow[] = 'آابپتثجچ‌حخدذرز‌ژس‌شصضطظعغفقکگلمنوهی';
 
     $i = arabic_to_farsi($i);
-    $i = preg_replace("![^".implode("",$allow)."]+!","-",$i);
-    $i = preg_replace("!\-$|^\-!","",$i);
+    $i = preg_replace("![^" . implode("", $allow) . "]+!", "-", $i);
+    $i = preg_replace("!\-$|^\-!", "", $i);
     $i = urlencode($i);
 
     return $i;
-
 }
 
 
@@ -50,30 +51,53 @@ function hname()
 
     //return strtolower(preg_replace("!^(www\.)!i", "", $_SERVER['HTTP_HOST']));
 
-    preg_match('!^(.*?)(?=$|\:)!',request()->getHttpHost(),$m);
+    preg_match('!^(.*?)(?=$|\:)!', request()->getHttpHost(), $m);
     #preg_match('!^(.*?)(?=$|\:)!',"x",$m);
-    
+
     return $m[1];
 }
 
-
-function domain_id() {
-    return getDomainIdByName(hname());
+$domainx = "sdf";
+function domainx() {
+    
+    return \Config::get('domain.zza')[0];
 }
 
-function getDomainIdByName($name) {
+function domain_id()
+{
+    if (defined("DOMAIN_ID")) {
+        
+ 
+        return DOMAIN_ID;
+
+    } else {
+      
+        define("DOMAIN_ID", getDomainIdByName(hname()));
+        return DOMAIN_ID;
+    }
+}
+
+
+
+
+
+function getDomainIdByName($name)
+{
+
     $domain = domain::whereDomain($name)->first();
     if (isset($domain) && isset($domain->id)) {
-    return $domain->id;
+        return $domain->id;
     } else {
         return -1;
     }
 }
 
 
-function domain_param() {
+
+function domain_param()
+{
     $domain = domain::whereDomain(hname())->first();
-    
+
     return $domain;
 }
 

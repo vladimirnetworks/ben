@@ -53,7 +53,7 @@ a:hover {
 
     <div class="p-4 p-md-5 mb-4 text-white bg-dark top" >
       <a href="/">home</a>
-      @foreach (domain_param()->cats_decoded as $k => $cat)
+      @foreach (Config::get('domain.cats') as $k => $cat)
       <a href="/cat/{{$k}}/">{{$k}}</a>
       @endforeach
     </div>

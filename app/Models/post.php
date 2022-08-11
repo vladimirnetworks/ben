@@ -14,7 +14,8 @@ class post extends Model
         'url',
         'title',
         'text',
-        'tiny_text'
+        'tiny_text',
+        'id'
     ];
 
     public static function create2($inp) {

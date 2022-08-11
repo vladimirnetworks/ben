@@ -10,6 +10,73 @@ use PhpParser\Node\Expr\PostDec;
 class adminController extends Controller
 {
     //
+
+    public function importpost()
+    {
+
+        $x = json_decode(file_get_contents("post.json"), true);
+
+        echo count($x[2]['data']);
+
+        foreach ($x[2]['data'] as $h) {
+          
+            post::create([
+                "id" => $h['postid'],
+                "domain_id" => $h['blogid'],
+                "title" => $h['title'],
+                "text" => $h['text'],
+                "thumb" => $h['thumb'],
+                "tiny_text" => $h['title'],
+                "url" => $h['url']
+            ]);
+            
+        }
+    }
+    public function import()
+    {
+
+        $x = json_decode(file_get_contents("blogs.json"), true);
+
+
+        foreach ($x[2]['data'] as $h) {
+            if ($h['filter'] == 0) {
+
+                $x2['domain'] = (preg_match("!\.!",  $h['name']) ? $h['name'] : $h['name'] . ".benham.ir");
+                $x2['title'] =  $h['title'];
+                $x2['id'] =  $h['id'];
+
+                $catt = explode("\n", trim($h['cats']));
+
+                $xc = [];
+                foreach ($catt as $c) {
+                    $xc[trim($c)] = trim($c);
+                }
+
+                $x2['cats'] =  json_encode($xc);
+                if ($x2['cats'] == '{"":""}') {
+                    $x2['cats'] = '{}';
+                }
+                $export[] = $x2;
+            }
+        }
+
+
+
+
+
+
+        foreach ($export as $x) {
+
+            #echo $x['id'];exit;
+
+            domain::create([
+                "id" => $x['id'],
+                "domain" => $x['domain'],
+                "title" => $x['title'],
+                "cats" => $x['cats']
+            ]);
+        }
+    }
     public function checkdomain($query)
     {
         return ["status" => (getDomainIdByName($query))];
@@ -30,10 +97,9 @@ class adminController extends Controller
     {
 
         $dom = domain::whereId(getDomainIdByName($query))->first();
-        post::where(["domain_id"=>$dom->id])->delete();
+        post::where(["domain_id" => $dom->id])->delete();
         $dom->delete();
         return $dom->id;
-
     }
 
     public function domainsetconf(Request $req, $query)
@@ -50,7 +116,7 @@ class adminController extends Controller
     public function regdomain(Request $req)
     {
         if (getDomainIdByName($req->domain) < 0) {
-            domain::create(["domain" => $req->domain, "title" => $req->domain]);
+            domain::create(["domain" => $req->domain, "title" => $req->domain, "cats" => "{}"]);
             return ["status" => "ok"];
         } else {
             return ["status" => "fail"];
@@ -85,8 +151,6 @@ class adminController extends Controller
                     $s1[] = ['type' => "domain", "data" => ["domain" => $domain->domain, "domain_id" => $domain->id], "title" => $domain->domain];
                 }
             }
-
-            
         }
 
         if (isset($query) && trim($query) != '') {

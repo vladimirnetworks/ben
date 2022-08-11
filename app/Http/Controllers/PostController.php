@@ -4,38 +4,85 @@ namespace App\Http\Controllers;
 
 use App\Models\post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PostController extends Controller
+use App\Models\domain;
+
+class PostController extends start
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page = 1)
+
+
+
+
+
+    public function index()
     {
-        $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
+
+        DB::enableQueryLog();
+        
+       
+
+        $cats = \Config::get('domain.cats');
 
 
-        return view("blogs.index", ["groups" => [
-            ["title"=>"a" , "posts"=>$posts],
-            ["title"=>"b" , "posts"=>$posts],
-            ["title"=>"c" , "posts"=>$posts]
-        ],"pageTitle"=>domain_param()->title]);
+       
+
+        $groups = [];
+       
+        if (count($cats)) {
+            foreach ($cats as $k => $cat) {
+                if ($k < 10) {
+                   
+                    $keys = array_map("trim", explode(",", $cat));
+                    $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->take(5)->get();
+                  #  dd(DB::getQueryLog());
+
+                    if (count($posts)) {
+                     $groups[] = ["title" => $k, "posts" => $posts];
+                    }
+                }
+            }
+        }
+
+        $latest = $posts = $this->domain()->posts->orderBy('id', 'DESC')->take(2)->get();
+      
+        return view("blogs.index", [
+            "latest" => $latest,
+            "groups" => $groups,
+             "pageTitle" => $this->domain()->title
+        ]);
+
+
+       
     }
+
+
+
 
     public function cat($cat, $page = 1)
     {
 
-        $cats = domain_param()->cats_decoded;
-        $keys = array_map("trim", explode(",", $cats[$cat]));
-        $posts = $posts = Post::whereDomainId(domain_id())->whereRaw(" MATCH(`title`) AGAINST (? IN BOOLEAN MODE) ", implode(" ", $keys))->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
         
+        $cats = \Config::get('domain.cats');
+
+       # print_r($cats );exit;
+
+       #dd($cats);
+      # dd($cats['لیپوساکشن']);
+
+        $keys = array_map("trim", explode(",", $cats[$cat]));
+        $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', $page);
+       
         if (isset($cats[$cat])) {
             $pageTitle = $cat;
         }
-        
-        return view("blogs.index", ["posts" => $posts,"pageTitle"=>$pageTitle]);
+
+        return view("blogs.cat", ["posts" => $posts, "pageTitle" => $pageTitle,"cat"=>$cat]);
     }
 
     /**
@@ -43,10 +90,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $posts = Post::create2(["domain_id" => 2, "url" => "aa-bb", "title" => "aaa", "text" => "zzzz"]);
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -65,13 +109,18 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($url, post $post)
+    public function show($postid)
     {
 
 
+        
         $posts = Post::whereDomainId(domain_id())->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', 0);
 
-        return view("blogs.post", ["post" => $post,"pageTitle"=>$post->title,"related"=>$posts]);
+        $post = $this->domain()->posts->whereId($postid);
+
+        dd($post);
+
+        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "related" => $posts]);
     }
 
     /**
