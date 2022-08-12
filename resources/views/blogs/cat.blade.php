@@ -12,16 +12,16 @@
 
 
 
-@if($posts->currentPage() > 2)
-<a href="/cat/{{$cat}}/index/{{$posts->currentPage()-1}}">prev</a>
+@if($pageinate->currentPage() > 2)
+<a href="/cat/{{$cat}}/index/{{$pageinate->currentPage()-1}}">prev</a>
 @endif
 
-@if($posts->currentPage() == 2)
+@if($pageinate->currentPage() == 2)
 <a href="/cat/{{$cat}}">prev</a>
 @endif
 
-@if($posts->currentPage() < $posts->lastPage())
-    <a href="/cat/{{$cat}}/index/{{$posts->currentPage()+1}}">next</a>
+@if($pageinate->currentPage() < $pageinate->lastPage())
+    <a href="/cat/{{$cat}}/index/{{$pageinate->currentPage()+1}}">next</a>
 @endif
 
 

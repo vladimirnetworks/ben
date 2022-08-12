@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\catrelish;
 use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,19 +71,31 @@ class PostController extends start
         
         $cats = \Config::get('domain.cats');
 
-       # print_r($cats );exit;
+        $catx = $this->domain()->catss->where("title",$cat)->first();
 
-       #dd($cats);
-      # dd($cats['لیپوساکشن']);
 
         $keys = array_map("trim", explode(",", $cats[$cat]));
         $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
-       
-        if (isset($cats[$cat])) {
+      
+        $postsrelish = catrelish::where([
+            ["domain_id", $this->domain()->id],
+            ["cat_id",$catx->id]
+        ])->paginate(10, ['*'], 'page', $page);
+
+        foreach ($postsrelish as $postrel) {
+           $ids[] = $postrel->post_id;
+        }
+
+        $posts = $this->domain()->Posts->whereIn('id',$ids)->get();
+
+
+      
+
+        if (isset($catx->id)) {
             $pageTitle = $cat;
         }
 
-        return view("blogs.cat", ["posts" => $posts, "pageTitle" => $pageTitle,"cat"=>$cat]);
+        return view("blogs.cat", ["posts" => $posts ,'pageinate'=>$postsrelish, "pageTitle" => $pageTitle,"cat"=>$cat]);
     }
 
     /**

@@ -47,3 +47,4 @@ Route::get('/post',"App\Http\Controllers\PostController@create");
 
 Route::get('admin/import',"App\Http\Controllers\adminController@import");
 Route::get('admin/importpost',"App\Http\Controllers\adminController@importpost");
+Route::get('admin/importcatrelish',"App\Http\Controllers\adminController@importcatrelish");

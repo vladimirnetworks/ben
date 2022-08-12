@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatrelishesTable extends Migration
+class CreateCatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCatrelishesTable extends Migration
      */
     public function up()
     {
-        Schema::create('catrelishes', function (Blueprint $table) {
+        Schema::create('cats', function (Blueprint $table) {
             $table->id();
-            $table->string('domain_id');
-            $table->string('cat_id');
+            $table->integer('domain_id');
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCatrelishesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catrelishes');
+        Schema::dropIfExists('cats');
     }
 }

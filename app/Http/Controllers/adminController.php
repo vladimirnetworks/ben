@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cat;
+use App\Models\catrelish;
 use App\Models\domain;
 use App\Models\post;
 use Illuminate\Http\Request;
@@ -11,6 +13,44 @@ class adminController extends Controller
 {
     //
 
+    public function importcatrelish()
+    {
+
+        $x = json_decode(file_get_contents("catrelish.json"), true);
+        foreach ($x[2]['data'] as $h) {
+            $catx = urldecode($h['cat']);
+
+
+            $catid = 0;
+
+            $getcats  = domain::where("id", $h['blogid'])->first();
+
+            if (isset($getcats->id)) {
+
+                $xcat = json_decode($getcats->cats, true);
+
+
+
+                $indx = 1;
+                foreach ($xcat as $k => $hhh) {
+                    if ($k == $catx) {
+                        $catid = $indx;
+                        break;
+                    }
+                    $indx++;
+                }
+
+                if ($catid >= 1) {
+                    catrelish::create([
+                        "domain_id" => $h['blogid'],
+                        "cat_id" => $catid,
+                        "post_id" => $h['postid']
+                    ]);
+                }
+            }
+        }
+    }
+
     public function importpost()
     {
 
@@ -19,20 +59,20 @@ class adminController extends Controller
         echo count($x[2]['data']);
 
         foreach ($x[2]['data'] as $h) {
-          
 
 
-        preg_match_all('!src="(.*?)"!',$h['text'],$m);
-        
-        
+
+            preg_match_all('!src="(.*?)"!', $h['text'], $m);
 
 
-        if (preg_match("!^[0-9]+$!",$h['thumb'])) {
-            $h['thumb'] = $m[1][$h['thumb']];
-        }
 
 
-     
+            if (preg_match("!^[0-9]+$!", $h['thumb'])) {
+                $h['thumb'] = $m[1][$h['thumb']];
+            }
+
+
+
 
             post::create([
                 "id" => $h['postid'],
@@ -44,7 +84,6 @@ class adminController extends Controller
                 "url" => $h['url'],
                 "tags" => $h['keysearch']
             ]);
-            
         }
     }
     public function import()
@@ -90,6 +129,22 @@ class adminController extends Controller
                 "title" => $x['title'],
                 "cats" => $x['cats']
             ]);
+
+            $jcat = json_decode($x['cats'], true);
+           
+
+            if (count($jcat)) {
+                foreach ($jcat as $kcat => $hitxaz) {
+
+                    cat::create([
+                        "domain_id" => $x['id'],
+                        "title" => $kcat
+                    ]);
+
+                   // dd($kcat);
+
+                }
+            }
         }
     }
     public function checkdomain($query)

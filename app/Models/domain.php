@@ -58,5 +58,17 @@ class domain extends Model
         return $this->posts->whereRaw(" MATCH(`title`,`tiny_text`,`text`,`tags`) AGAINST (? IN BOOLEAN MODE) ", $query);
     }
 
+
+    public function catss()
+    {
+        return $this->hasMany('App\Models\cat');
+    }
+
+    public function postss()
+    {
+        return $this->hasMany('App\Models\post');
+    }
+    
+
     protected $appends = ['cats_decoded', 'posts'];
 }

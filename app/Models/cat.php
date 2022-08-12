@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class catrelish extends Model
+class cat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'domain_id',
-        'cat_id',
-        'post_id'
+        'title',
     ];
-
 
 }
