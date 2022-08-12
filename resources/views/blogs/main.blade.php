@@ -16,13 +16,37 @@
   <script src="/bs/bootstrap.min.js"></script>
 
   <style>
+
+@font-face {
+font-family: "irans";
+src: url("static/irans.eot");
+src: url("static/irans.eot?#iefix") format("embedded-opentype"),
+     url("static/irans.woff") format("woff");
+
+}
+
+@font-face {
+font-family: "irans2";
+
+src: url("static/irans.ttf") format("truetype");
+
+}
+
+
+
+
     .main {
       direction: rtl;
       text-align: right;
     }
 
     body {
-      background-color: white;
+      background-color: #eeeff1;
+      font-family:irans,irans2;	
+      font-size: 1.2rem;
+      line-height: 2.1rem;
+ 
+    font-weight: 400;
     }
 
     .padding-0{
@@ -40,6 +64,10 @@ a:hover {
 
 .top a , .top a:visited {
  display:inline-block
+}
+
+.bpost img {
+  width:100%
 }
   </style>
 
@@ -68,7 +96,7 @@ a:hover {
 
 
 
-    <div class="p-4 p-md-5 mb-4 text-white bg-dark">
+    <div class="p-4 p-md-5 mt-4 text-white bg-dark">
       footer
       </div>
   </div>

@@ -8,7 +8,7 @@
 
 @foreach($groups as $group)
 {{$group['title']}}
-<div style="margin:0px;padding:0px" class="row">
+<div  class="row m-3 bg-white rounded">
     @foreach($group['posts'] as $post)
       @include("blogs.includes.list") 
     @endforeach
