@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 if (hname() == 'benham2.ir' || hname() == 'www.benham2.ir' || hname() == '192.168.1.216') {
 
 Route::get('/', "App\Http\Controllers\MainPageController@index");
-Route::get('/cat/{cat}', "App\Http\Controllers\MainPageController@index");
+Route::get('/{cat}', "App\Http\Controllers\MainPageController@index");
 
 
 } else {

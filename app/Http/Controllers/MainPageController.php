@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MainPageController extends Controller
 {
-    public function index()
+    public function index($cat = "")
     {
 
 
@@ -88,8 +88,22 @@ class MainPageController extends Controller
 
 
 
+        $cating = '{
+
+            "learn":{
+                "title":"آموزش",
+                "blogs":["emojimeaning.benham.ir","tasseography.benham.ir","granreserva.benham.ir"]
+            },
+
+            "fun":{
+                "title":"سرگرمی",
+                "blogs":["cooking.benham.ir","tasseography.benham.ir","granreserva.benham.ir"]
+            }
+
+        }';
 
 
+        $cating = json_decode($cating, true);
 
 
 
@@ -111,6 +125,17 @@ class MainPageController extends Controller
                 }
             }
         }
+
+        foreach ($cating as $h) {
+            foreach ($h['blogs'] as $blog) {
+
+                $ioid = $blog;
+                if (!isset($blogtoid[$ioid])) {
+                    $bloog[] = $ioid;
+                }
+            }
+        }
+
 
         if (count($bloog)) {
             $blogsid = domain::whereIn('domain', $bloog)->get();
@@ -148,8 +173,8 @@ class MainPageController extends Controller
 
                 foreach ($tp as $ppp) {
 
-                    $ppp->host = "https://".$ioid;
-                    $posts[] = $ppp ;
+                    $ppp->host = "https://" . $ioid;
+                    $posts[] = $ppp;
                 }
 
                 // $xindx[$h['title']] = post::where("domain_id",$blogtoid[$ioid])->take(4)->get();
@@ -161,30 +186,62 @@ class MainPageController extends Controller
             $section[$h['title']]  = $posts;
         }
 
-      
 
 
 
+        /////////////////////////////////
 
+        $bigtitle = null;
+        $postsbig = [];
+        if (isset($cating[$cat])) {
+
+            $bigx = $cating[$cat];
+            $bigtitle = $bigx['title'];
+
+           
+            foreach ($bigx['blogs'] as $blog) {
+
+                $ioid = $blog;
+
+                $tp = post::where("domain_id", $blogtoid[$ioid])->take(5)->get();
+
+                foreach ($tp as $ppp) {
+
+                    $ppp->host = "https://" . $ioid;
+                    $postsbig[] = $ppp;
+                }
+
+                // $xindx[$h['title']] = post::where("domain_id",$blogtoid[$ioid])->take(4)->get();
+
+
+
+            }
+        }
+
+       
 
         $t = [
-            "host"=>"aaa",
-            "url"=>"aaa",
-            "id"=>"aaa",
-            "thumb"=>"https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
-            "title"=>"aaa",
-            "caption"=>"aaa"
+            "host" => "aaa",
+            "url" => "aaa",
+            "id" => "aaa",
+            "thumb" => "https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
+            "title" => "aaa",
+            "caption" => "aaa"
         ];
+
+
 
         $t = json_decode(json_encode($t));
 
 
-        return view("main.index",
-         [
-             "groups" => $section,
-             "top6"=>json_decode($top6),
-             "big"=>[$t,$t,$t,$t,$t]
-         ]
+        return view(
+            "main.index",
+            [
+                "groups" => $section,
+                "top6" => json_decode($top6),
+                "big" => $postsbig,
+                "bigtitle" => $bigtitle
+            ]
         );
     }
 }

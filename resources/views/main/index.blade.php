@@ -15,16 +15,16 @@
 
         @include("includes.topmenu")
 
-        <div class="row py-1 "
+        <div class="pnkmenu row py-1 "
             style="background: rgb(187,0,121);
         background: linear-gradient(0deg, rgba(187,0,121,1) 0%, rgba(255,0,165,1) 100%);color:white;font-weight:bold;margin:0px">
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>فیلم و سریال</div>
+                <div><a href="/fun">فیلم و سریال</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>علمی</div>
+                <div><a href="/fun">علمی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
@@ -76,11 +76,13 @@
             <div class="col-6 col-md-2 mt-1 p-1 @if($k >= 4) d-none d-md-inline @endif">
                 <div class="rounded"
                     style="position:relative;overflow:hidden;width:100%;padding-bottom:70%;background-color:white">
-                    <a target="_blank" href="{{$top->link}}"> <img style="z-index:999;width:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
-                        src="{{$top->img[0]}}" /></a>
+                    <a target="_blank" href="{{$top->link}}"> <img
+                            style="z-index:999;width:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
+                            src="{{$top->img[0]}}" /></a>
                     <div
                         style="width:100%;position:absolute;bottom:0px;z-index:1000;padding:1rem;background-color:#000000a8;">
-                        <a target="_blank" href="{{$top->link}}" style="color:white;font-weight:bold">{{$top->title}} </a>
+                        <a target="_blank" href="{{$top->link}}" style="color:white;font-weight:bold">{{$top->title}}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -90,22 +92,26 @@
         </div>
 
 
+        @if($big)
         <div class="p-3 m-3 bg-white rounded">
-            <h3 >آموزش</h3>
-        <div class="row" style="margin:0px">
-           
-            
-            
-             @foreach($big as $bk => $post)
-             <div class="col-12 col-md-4">
-              @include("blogs.includes.list")
+            <h3>{{$bigtitle}}</h3>
+            <div class="row" style="margin:0px">
+
+
+
+                @foreach($big as $bk => $post)
+                <div class="col-12 col-md-4">
+                    @include("blogs.includes.list")
+                </div>
+                @endforeach
+
+
             </div>
-             @endforeach
-            
-
         </div>
-    </div>
+        @endif
 
+
+        @if(!$big)
         <div class="row" style="margin:0px">
             @foreach($groups as $kg => $group)
             <div class="col-md-6 col-lg-4 m-0">
@@ -123,6 +129,7 @@
             </div>
             @endforeach
         </div>
+        @endif
 
 
 

@@ -12,3 +12,4 @@ $blogtoid["yaprakdokumu.benham.ir"] = 53 ;
 $blogtoid["granreserva.benham.ir"] = 56 ;
 $blogtoid["tasseography.benham.ir"] = 172 ;
 $blogtoid["emojimeaning.benham.ir"] = 244 ;
+$blogtoid["cooking.benham.ir"] = 262 ;

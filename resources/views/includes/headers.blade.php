@@ -191,4 +191,33 @@
     }
 
   }
+
+  .pnkmenu a ,  .pnkmenu a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color:white;
+    display: inline-block;
+  position: relative;
+  
+  }
+
+
+  .pnkmenu a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  border-radius: 5px;
+  height: 0.05em;
+  bottom: 0;
+  left: 0;
+  background: currentcolor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.pnkmenu a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
 </style>
