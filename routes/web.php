@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-if (hname() == 'benham2.ir' || hname() == 'www.benham2.ir') {
+if (hname() == 'benham2.ir' || hname() == 'www.benham2.ir' || hname() == '192.168.1.216') {
 
-Route::get('/', function () {
-    return "main";
-});
+Route::get('/', "App\Http\Controllers\MainPageController@index");
 
 
 

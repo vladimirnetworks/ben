@@ -127,7 +127,7 @@ class PostController extends start
 
 
         
-        $posts = Post::whereDomainId($this->domain()->id)->orderBy('id', 'DESC')->paginate(2, ['*'], 'page', 0);
+        $posts = Post::whereDomainId($this->domain()->id)->orderBy('id', 'asc')->paginate(10, ['*'], 'page', 0);
 
         $post = $this->domain()->posts->whereId($id)->get()[0];
 
