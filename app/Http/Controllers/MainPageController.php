@@ -10,6 +10,50 @@ class MainPageController extends Controller
 {
     public function index()
     {
+
+
+        $top6 = '[
+
+
+            {
+                "title":"aaaa",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
+                "link" : "https://www.google.com"
+            },
+
+            {
+                "title":"bbb",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-10%","-100%"],
+               "link" : "https://www.asdsad.com"
+            },
+
+            {
+                "title":"ccc",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
+               "link" : "https://www.google.com"
+            },
+
+            {
+                "title":"ddd",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
+               "link" : "https://www.google.com"
+            },
+
+            {
+                "title":"eee",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
+               "link" : "https://www.google.com"
+            },
+
+            {
+                "title":"fff",
+                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
+               "link" : "https://www.google.com"
+            }
+
+
+        ]';
+
         $x = '[
                   
 
@@ -39,6 +83,15 @@ class MainPageController extends Controller
             } 
             
         ]';
+
+
+
+
+
+
+
+
+
 
 
         $x = json_decode($x, true);
@@ -114,9 +167,24 @@ class MainPageController extends Controller
 
 
 
+        $t = [
+            "host"=>"aaa",
+            "url"=>"aaa",
+            "id"=>"aaa",
+            "thumb"=>"https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
+            "title"=>"aaa",
+            "caption"=>"aaa"
+        ];
+
+        $t = json_decode(json_encode($t));
 
 
-
-        return view("main.index", ["groups" => $section]);
+        return view("main.index",
+         [
+             "groups" => $section,
+             "top6"=>json_decode($top6),
+             "big"=>[$t,$t,$t,$t,$t]
+         ]
+        );
     }
 }
