@@ -103,6 +103,11 @@
   }
 
 
+  .topbg2 {
+    background-color: white;
+   
+  
+  }
   .topbg {
     background: linear-gradient(214deg, #d200a5, #0061d2, #d20000);
     background-size: 600% 600%;
@@ -158,7 +163,7 @@
     max-width: 30px;
     width: 10vw;
     height: 0.3rem;
-    background-color: white;
+    background-color: rgb(2, 0, 110);
     border-radius: 1rem;
     margin-top: 0.3rem;
   }
@@ -203,7 +208,7 @@
   }
 
 
-  .pnkmenu a::after {
+  .pnkmenu a::after , .wbmnu a::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -221,4 +226,39 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.wbmnu a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+        
+.wbmnu {
+    margin-right:2rem;
+  }
+  .wbmnu a , .wbmnu a:visited {
+    position: relative;
+      color:#060055ab;
+      font-size: 0.9rem;
+      margin-right:1rem;
+      font-weight: normal;
+     
+  }
+
+  .wbmnu a:before {
+    content:"\203A";
+    margin-left:0.2rem
+  }
+
+
+  .bnh {
+    background: #121FCF;
+background: linear-gradient(to right, #121FCF 0%, #CF1512 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+
+
+
+  }
 </style>

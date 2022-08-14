@@ -1,4 +1,4 @@
-<div class="text-white topbg top  container-fluid">
+<div class="text-white topbg2 top  container-fluid">
 
   <div class="row topmn ">
 
@@ -12,16 +12,31 @@
     </div>
 
 
-    <div id="mbtitle" class="col text-center text-lg-right" style="font-weight:bold;font-size:max(2vw, 1rem);">
-      <a href="/" style="color:white"> مجله‌ی اینترنتی
+    <div id="mbtitle" class="col text-center text-lg-right" style="    justify-content: center;display:flex;font-weight:bold;font-size:max(2vw, 1rem);">
+      <a href="/" class="bnh"> مجله‌ی اینترنتی
         بهنام</a>
+        
+
+        <div class="wbmnu d-none d-lg-inline">
+          <a href="#">صفحه اول</a>
+          <a href="#">نقشه سایت</a>
+          <a href="#">تماس با ما</a>
+        </div>
+        
+
+
+        <div style="color:red;margin-right:auto" class="d-none d-lg-inline">
+        search
+        </div>
+
 
     </div>
 
 
-    <div id="mbmag" class="col-1 text-center ham ml-4" onClick="srchm()">
+    <div id="mbmag" class="col-1 text-center ham ml-4 d-lg-none" onClick="srchm()">
       <img src="https://www.behkiana.ir/icons/mag.png?" style="width:3rem">
     </div>
+
 
 
 
@@ -29,7 +44,7 @@
       <div class=" rounded row m-2" style="width:100%;background-color:white">
 
         <input id="srchboxm" class="col mr-1" placeholder="جستجو ..."
-          style="border:0px;outline: none;width:100%;background-color: transparent;" />
+          style="border:0px;outline: none;width:100%;background-color: transparent;border-bottom:1px solid grey" />
         <img src="https://www.behkiana.ir/icons/mag.png?" style="height:100%">
 
       </div>

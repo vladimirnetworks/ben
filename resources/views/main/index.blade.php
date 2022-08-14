@@ -17,7 +17,7 @@
 
         <div class="pnkmenu row py-1 "
             style="background: rgb(187,0,121);
-        background: linear-gradient(0deg, rgba(187,0,121,1) 0%, rgba(255,0,165,1) 100%);color:white;font-weight:bold;margin:0px">
+        background: linear-gradient(180deg, rgb(187 0 24) 0%, rgb(255 0 129) 100%);color:white;font-weight:bold;margin:0px;border-top:0.3rem solid #f79900">
 
             <div class="col-4 col-md-3 text-center p-3">
                 <div><a href="/fun">فیلم و سریال</a></div>
