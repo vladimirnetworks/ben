@@ -188,6 +188,7 @@
   @media all and (orientation:landscape) {
     .topmn {
       height: 11vh;
+      min-height:50px;
     }
 
   }
