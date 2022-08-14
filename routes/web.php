@@ -17,7 +17,7 @@ if (hname() == 'benham2.ir' || hname() == 'www.benham2.ir' || hname() == '192.16
 
 Route::get('/', "App\Http\Controllers\MainPageController@index");
 Route::get('/{cat}', "App\Http\Controllers\MainPageController@index");
-
+Route::post('/search', "App\Http\Controllers\MainPageController@searchall");
 
 } else {
 

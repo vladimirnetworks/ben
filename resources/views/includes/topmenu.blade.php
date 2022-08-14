@@ -12,12 +12,12 @@
     </div>
 
 
-    <div id="mbtitle" class="col text-center text-lg-right" style="    justify-content: center;display:flex;font-weight:bold;font-size:max(2vw, 1rem);">
-      <a href="/" class="bnh"> مجله‌ی اینترنتی
+    <div id="mbtitle" class="col text-center text-lg-right" style=" align-items: center;   justify-content: center;display:flex;font-weight:bold;font-size:max(2vw, 1rem);height:100%">
+      <a href="/" class="bnh" style="white-space: nowrap;"> مجله‌ی اینترنتی
         بهنام</a>
         
 
-        <div class="wbmnu d-none d-lg-inline">
+        <div class="wbmnu d-none d-lg-inline" style="white-space: nowrap;">
           <a href="#">صفحه اول</a>
           <a href="#">نقشه سایت</a>
           <a href="#">تماس با ما</a>
@@ -25,8 +25,14 @@
         
 
 
-        <div style="color:red;margin-right:auto" class="d-none d-lg-inline">
-        search
+        <div style="width:100%;display:flex;height:100%;align-items: center;" class="d-none d-lg-flex">
+          <div class="" style="border-radius:1rem;height:50%;background-color: white;width:50%;display:flex;justify-content: center;align-items:center;margin-right: auto;
+          margin-left: auto;border:1px solid #e7e7e7">
+          <form id="frm0" method="post" action="http://192.168.1.216:8000/search" style="display: inherit;width:90%">
+            {{ csrf_field() }}
+            <input  name="qsearch" style="height: 80%;width:90%;border:0px;outline:0px;font-size:1rem" placeholder="جستجو ..." /></form>
+           <img onClick="document.getElementById('frm0').submit()" src="https://www.behkiana.ir/icons/mag.png?" style="height: 80%" />
+          </div>
         </div>
 
 
@@ -43,9 +49,9 @@
     <div id="mbsrch" class="col" style="display:none;height:100%;">
       <div class=" rounded row m-2" style="width:100%;background-color:white">
 
-        <input id="srchboxm" class="col mr-1" placeholder="جستجو ..."
-          style="border:0px;outline: none;width:100%;background-color: transparent;border-bottom:1px solid grey" />
-        <img src="https://www.behkiana.ir/icons/mag.png?" style="height:100%">
+        <form id="frm1" style="display: inherit;width:90%" id="frm0" method="post" action="http://192.168.1.216:8000/search"> <input id="srchboxm" name="qsearch" class="col mr-1" placeholder="جستجو ..."
+          style="border:0px;outline: none;width:100%;background-color: transparent;" />  {{ csrf_field() }}</form>
+        <img onClick="document.getElementById('frm0').submit()" src="https://www.behkiana.ir/icons/mag.png?" style="height:100%">
 
       </div>
     </div>
@@ -63,10 +69,13 @@
         });
       }
 
-$("#srchboxm").focusout(function(){
+$("#srchboxm").focusout(function(e){
+setTimeout(function() {
   $("#mbsrch").hide()
   $("#mbmag").fadeIn();
   $("#mbtitle").fadeIn();
+}, 500);
+
 
 });
 

@@ -218,20 +218,10 @@ class MainPageController extends Controller
             }
         }
 
+
+        
        
 
-        $t = [
-            "host" => "aaa",
-            "url" => "aaa",
-            "id" => "aaa",
-            "thumb" => "https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
-            "title" => "aaa",
-            "caption" => "aaa"
-        ];
-
-
-
-        $t = json_decode(json_encode($t));
 
 
         return view(
@@ -241,6 +231,34 @@ class MainPageController extends Controller
                 "top6" => json_decode($top6),
                 "big" => $postsbig,
                 "bigtitle" => $bigtitle
+            ]
+        );
+    }
+
+    public function searchall(Request $r)
+    {
+
+        $t = [[
+            "host" => "aaa",
+            "url" => "aaa",
+            "id" => "aaa",
+            "thumb" => "https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
+            "title" => "aaa",
+            "caption" => "aaa"
+        ]];
+
+
+
+        $t = json_decode(json_encode($t));
+
+
+        return view(
+            "main.index",
+            [
+                "groups" => null,
+                "top6" => null,
+                "big" => $t,
+                "bigtitle" => $r['qsearch']
             ]
         );
     }

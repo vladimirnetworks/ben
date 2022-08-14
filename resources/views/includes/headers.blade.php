@@ -104,10 +104,11 @@
 
 
   .topbg2 {
-    background-color: white;
-   
-  
-  }
+
+    background: rgb(240,240,240);
+background: linear-gradient(0deg, rgba(240,240,240,1) 0%, rgba(255,255,255,1) 31%, rgba(255,255,255,1) 100%);
+border-bottom:1px solid #e3e3e3
+}
   .topbg {
     background: linear-gradient(214deg, #d200a5, #0061d2, #d20000);
     background-size: 600% 600%;
