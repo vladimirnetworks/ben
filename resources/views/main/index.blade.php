@@ -74,7 +74,7 @@
         <div class="row mt-4" style="margin:0px">
 
 
-            @if(!$big)
+            @if(!$big && $now != 'search')
             @foreach($top6 as $k=>$top)
             <div class="col-6 col-md-2 mt-1 p-1 @if($k >= 4) d-none d-md-inline @endif">
                 <div class="rounded"

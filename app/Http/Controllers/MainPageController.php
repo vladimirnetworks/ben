@@ -187,6 +187,7 @@ class MainPageController extends Controller
         return view(
             "main.index",
             [
+                "now"=>"search",
                 "groups" => null,
                 "top6" => null,
                 "big" => $t,
