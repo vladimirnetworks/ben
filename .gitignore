@@ -4,6 +4,7 @@
 /public/catrelish.json
 /public/post.json
 /public/storage
+/public/xblid.php
 /storage/*.key
 /vendor
 .env
