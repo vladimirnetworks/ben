@@ -74,8 +74,8 @@ class PostController extends start
         $catx = $this->domain()->catss->where("title",$cat)->first();
 
 
-        $keys = array_map("trim", explode(",", $cats[$cat]));
-        $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
+        //$keys = array_map("trim", explode(",", $cats[$cat]));
+        //$posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
       
         $postsrelish = catrelish::where([
             ["domain_id", $this->domain()->id],
