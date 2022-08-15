@@ -268,3 +268,14 @@ function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
        $x[7] = 'یک‌شنبه';
      return $x[date('w')];
    }
+
+   function onlineusers() {
+    $xvis = json_decode(file_get_contents("onlinex.json"),true);
+    if (isset($xvis[date("y-m-dXh:i")])) {
+        return $xvis[date("y-m-dXh:i")];
+    } else {
+        $vis = rand(30,50);
+        file_put_contents("onlinex.json", json_encode([date("y-m-dXh:i")=>rand(30,50)]));
+      return $vis;
+    }
+   }

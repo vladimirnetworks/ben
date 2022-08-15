@@ -5,6 +5,7 @@
 /public/post.json
 /public/storage
 /public/xblid.php
+/public/onlinex.json
 /storage/*.key
 /vendor
 .env
