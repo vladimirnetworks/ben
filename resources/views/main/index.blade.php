@@ -20,11 +20,11 @@
         background: linear-gradient(180deg, rgb(187 0 24) 0%, rgb(255 0 129) 100%);color:white;font-weight:bold;margin:0px;border-top:0.3rem solid #f79900">
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div><a href="/fun">فیلم و سریال</a></div>
+                <div><a href="#">فیلم و سریال</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div><a href="/fun">علمی</a></div>
+                <div><a href="#">علمی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
