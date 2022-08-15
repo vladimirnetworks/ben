@@ -13,7 +13,7 @@
     
     </div>
 
-    <div class=" bg-white rounded my-3 py-3">
+    <div class="row bg-white rounded my-3 py-3">
         @foreach($related as $post)
         <div class="col-12 col-md-4">
         @include("blogs.includes.list")
