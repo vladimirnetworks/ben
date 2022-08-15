@@ -65,7 +65,7 @@ class PostController extends start
 
 
 
-    public function cat($cat, $page = 1)
+    public function cat($cattitle,$cat, $page = 1)
     {
 
         
@@ -79,7 +79,7 @@ class PostController extends start
       
         $postsrelish = catrelish::where([
             ["domain_id", $this->domain()->id],
-            ["cat_id",$catx->id]
+            ["cat_id",/*$catx->id*/$cat]
         ])->paginate(10, ['*'], 'page', $page);
 
         foreach ($postsrelish as $postrel) {
