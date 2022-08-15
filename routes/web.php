@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 if (!isset($_COOKIE['vstx'])) {
-    setcookie("vstx", "v", time() + 10, "/", ".benham.ir");
+    setcookie("vstx", "v", time() + 60*30, "/", ".benham.ir");
 
     $flnm = date("Y-m-d-h:i");
 
