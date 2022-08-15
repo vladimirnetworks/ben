@@ -12,6 +12,13 @@
         <div class="m-2 bpost"> {!! $post->text !!} </div>
     
     </div>
+
+    <div class=" bg-white rounded my-3 py-3">
+        @foreach($related as $post)
+        @include("blogs.includes.list")
+        @endforeach
+        </div>
+
 </div>
 
 <div class="col-12 col-md-3">
