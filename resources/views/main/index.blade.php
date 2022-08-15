@@ -77,7 +77,7 @@
                 <div class="rounded"
                     style="position:relative;overflow:hidden;width:100%;padding-bottom:70%;background-color:white">
                     <a target="_blank" href="{{$top->link}}"> <img
-                            style="z-index:999;width:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
+                            style="z-index:999;height:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
                             src="{{$top->img[0]}}" /></a>
                     <div
                         style="width:100%;position:absolute;bottom:0px;z-index:1000;padding:1rem;background-color:#000000a8;">
