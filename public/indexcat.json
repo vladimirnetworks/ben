@@ -22,8 +22,15 @@
     } ,
 
     {
-        "title":"test",
-         "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
+        "title":"مسافرت",
+         "blogs":[["kish.benham.ir","latest"],"rasht.benham.ir","kerman.benham.ir"]
+    } 
+
+    ,
+
+    {
+        "title":"حیوانات",
+         "blogs":[["duck.benham.ir","latest"],"bee.benham.ir","ape.benham.ir"]
     } 
     
 ]
