@@ -65,7 +65,7 @@ class PostController extends start
 
 
 
-    public function cat($cattitle,$cat, $page = 1)
+    public function cat($cat, $page = 1)
     {
 
         
@@ -74,12 +74,12 @@ class PostController extends start
         $catx = $this->domain()->catss->where("title",$cat)->first();
 
 
-        //$keys = array_map("trim", explode(",", $cats[$cat]));
-        //$posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
+        $keys = array_map("trim", explode(",", $cats[$cat]));
+        $posts = $this->domain()->Search(implode(" ", $keys))->orderBy('id', 'DESC')->paginate(10, ['*'], 'page', $page);
       
         $postsrelish = catrelish::where([
             ["domain_id", $this->domain()->id],
-            ["cat_id",/*$catx->id*/$cat]
+            ["cat_id",$catx->id]
         ])->paginate(10, ['*'], 'page', $page);
 
         foreach ($postsrelish as $postrel) {
@@ -91,9 +91,9 @@ class PostController extends start
 
       
 
-        //if (isset($catx->id)) {
-            $pageTitle = $cattitle;
-        //}
+        if (isset($catx->id)) {
+            $pageTitle = $cat;
+        }
 
         return view("blogs.cat", ["posts" => $posts ,'pageinate'=>$postsrelish, "pageTitle" => $pageTitle,"cat"=>$cat]);
     }
