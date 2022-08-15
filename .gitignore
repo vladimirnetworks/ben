@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
-/public/*.json
+/public/blogs.json
+/public/catrelish.json
+/public/post.json
 /public/storage
 /storage/*.key
 /vendor
