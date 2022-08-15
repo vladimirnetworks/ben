@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if (!isset($_COOKIE['vstx'])) {
+   setcookie("vstx","v",time() + 10,"/",".benham.ir");
+}
+
 if (hname() == 'www.benham.ir' || hname() == 'benham.ir' || hname() == 'benham2.ir' || hname() == 'www.benham2.ir' || hname() == '192.168.1.216') {
 
 Route::get('/', "App\Http\Controllers\MainPageController@index");
