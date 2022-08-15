@@ -115,6 +115,12 @@
         </div>
         @endif
 
+        @if($big == 'notfound')
+        <div class="p-3 m-3 bg-white rounded">
+            <h3>هیچ نتیجه ای یافت نشد</h3>
+        </div>
+        @endif
+
 
         @if(!$big)
         <div class="row" style="margin:0px">
