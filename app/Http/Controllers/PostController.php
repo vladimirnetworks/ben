@@ -71,6 +71,7 @@ class PostController extends start
         
         $cats = \Config::get('domain.cats');
 
+        dd($cat);
         $catx = $this->domain()->catss->where("title",$cat)->first();
 
 
