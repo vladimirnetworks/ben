@@ -75,13 +75,14 @@
             @foreach($top6 as $k=>$top)
             <div class="col-6 col-md-2 mt-1 p-1 @if($k >= 4) d-none d-md-inline @endif">
                 <div class="rounded"
-                    style="position:relative;overflow:hidden;width:100%;padding-bottom:70%;background-color:white">
+                    style="position:relative;overflow:hidden;width:100%;padding-bottom:70%;background-color:white;background-image:url('{{$top->img[0]}}');background-size: cover;background-position: center;">
                     <a target="_blank" href="{{$top->link}}"> <img
-                            style="z-index:999;height:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
+                            style="display:none;z-index:999;height:100%;position:absolute;top:{{$top->img[1]}};bottom:{{$top->img[2]}};margin:auto;left:-100%;right:-100%"
                             src="{{$top->img[0]}}" /></a>
                     <div
-                        style="width:100%;position:absolute;bottom:0px;z-index:1000;padding:1rem;background-color:#000000a8;">
-                        <a target="_blank" href="{{$top->link}}" style="color:white;font-weight:bold">{{$top->title}}
+                        style="width:100%;position:absolute;bottom:0px;z-index:1000;padding:1rem;background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(122,122,122,0) 54%, rgba(255,255,255,0) 100%);;
+                        ">
+                        <a target="_blank" href="{{$top->link}}" style="color:white;font-weight:bold;text-shadow:1px 1px 3px #000">{{$top->title}}
                         </a>
                     </div>
                 </div>
