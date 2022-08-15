@@ -97,7 +97,7 @@
         </div>
 
 
-        @if($big)
+        @if($big $now != 'search')
         <div class="p-3 m-3 bg-white rounded">
             <h3>{{$bigtitle}}</h3>
             <div class="row" style="margin:0px">
