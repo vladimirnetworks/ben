@@ -116,7 +116,8 @@
         @endif
 
 
-        @if(!$big)
+        
+        @if(!$big && $now != 'search')
         <div class="row" style="margin:0px">
             @foreach($groups as $kg => $group)
             <div class="col-md-6 col-lg-4 m-0">
