@@ -12,102 +12,22 @@ class MainPageController extends Controller
     {
 
 
-        $top6 = '[
+        $top6 = file_get_contents("top6.json");
 
-
-            {
-                "title":"aaaa",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
-                "link" : "https://www.google.com"
-            },
-
-            {
-                "title":"bbb",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-10%","-100%"],
-               "link" : "https://www.asdsad.com"
-            },
-
-            {
-                "title":"ccc",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
-               "link" : "https://www.google.com"
-            },
-
-            {
-                "title":"ddd",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
-               "link" : "https://www.google.com"
-            },
-
-            {
-                "title":"eee",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
-               "link" : "https://www.google.com"
-            },
-
-            {
-                "title":"fff",
-                "img":["https://sc.upid.ir/upload/169gm2p8/%d9%85%d8%a7%d8%b1%d8%aa%d8%a7-%d8%aa%d9%88%d8%b1%d9%86%d9%87-9.jpg","-100%","-100%"],
-               "link" : "https://www.google.com"
-            }
-
-
-        ]';
-
-        $x = '[
-                  
-
-            {
-                "title":"سرگرمی",
-                 "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
-            } ,
-
-            {
-                "title":"تندرستی",
-                 "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
-            } ,
-
-            {
-                "title":"dd",
-                 "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
-            } ,
-
-            {
-                "title":"ff",
-                 "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
-            } ,
-
-            {
-                "title":"ee",
-                 "blogs":[["tasseography.benham.ir","latest"],"emojimeaning.benham.ir","granreserva.benham.ir"]
-            } 
-            
-        ]';
+        
 
 
 
 
 
-        $cating = '{
-
-            "learn":{
-                "title":"آموزش",
-                "blogs":["emojimeaning.benham.ir","tasseography.benham.ir","granreserva.benham.ir"]
-            },
-
-            "fun":{
-                "title":"سرگرمی",
-                "blogs":["cooking.benham.ir","tasseography.benham.ir","granreserva.benham.ir"]
-            }
-
-        }';
+        $cating =  file_get_contents('pinkcats.json');
 
 
         $cating = json_decode($cating, true);
 
 
 
-
+        $x = file_get_contents("indexcat.json");
         $x = json_decode($x, true);
 
 
@@ -238,14 +158,23 @@ class MainPageController extends Controller
     public function searchall(Request $r)
     {
 
-        $t = [[
-            "host" => "aaa",
-            "url" => "aaa",
-            "id" => "aaa",
-            "thumb" => "https://sc.upid.ir/upload/2pgkfq2i/camel1-5c8fc2b1c9e77c0001eb1c6f.jpg",
-            "title" => "aaa",
-            "caption" => "aaa"
-        ]];
+
+        $tp = post::where("title" ,"like","%{$r->qsearch}%")->take(50)->get();
+
+     
+
+        $t = [];
+        foreach ($tp as $h) {
+            $t[] = [
+                "host" => "https://".$h->domain->domain,
+                "url" => $h->url,
+                "id" => $h->id,
+                "thumb" => $h->thumb,
+                "title" => $h->domain->title,
+                "caption" => $h->title
+            ];
+        }
+       
 
 
 

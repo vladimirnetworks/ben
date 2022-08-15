@@ -5,8 +5,12 @@
 
        
         <div class="col-4 col-md-4 p-1">
-            <a href="{{$post->host}}/post/{{$post->url}}-{{$post->id}}.html"> <img style="width:100%;border-radius:4px"
-                    src="{{$post->thumb}}" /></a>
+                <a href="{{$post->host}}/post/{{$post->url}}-{{$post->id}}.html">
+                 {{--<img style="width:100%;border-radius:4px" src="{{$post->thumb}}" />--}}
+                 <div style="border-radius:4px;width:100%;padding-bottom:90%;position:relative;overflow:hidden">
+                    <img style="border-radius:4px;height:100%;position: absolute;left:-100%;right:-100%;margin:auto;" src="{{$post->thumb}}" />
+                 </div>
+                </a>
         </div>
 
         <div class="col-8 p-1">

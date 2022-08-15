@@ -22,13 +22,14 @@
         </div>
     </div>
 
-    <div style="" class="col-md-6 ">
+   <!-- <div style="" class="col-md-6 ">
         <div class="col-md-12 bg-white rounded">
         @foreach($related as $post)
         @include("blogs.includes.list")
         @endforeach
         </div>
     </div>
+-->
     
 </div>
 
