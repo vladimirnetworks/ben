@@ -50,7 +50,7 @@ class PostController extends start
             }
         }
 
-        $latest = $posts = $this->domain()->posts->orderBy('id', 'DESC')->take(2)->get();
+        $latest = $posts = $this->domain()->posts->orderBy('id', 'DESC')->take(10)->get();
       
         return view("blogs.index", [
             "latest" => $latest,
