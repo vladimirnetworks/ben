@@ -22,6 +22,11 @@ if (!isset($_COOKIE['vstx'])) {
         file_put_contents("onlinex.json", json_encode([date("y-m-dXh:i")=>0]));
     } else {
         $xvis = json_decode(file_get_contents("onlinex.json"),true);
+       if (count(array_keys($xvis))>1) {
+           $latest = array_keys($xvis)[count(array_keys($xvis))-1];
+    
+           $xvis = [$latest=>$xvis[$latest]];
+       }
         if (isset($xvis[date("y-m-dXh:i")])) {
         $xvis[date("y-m-dXh:i")]++;
         } else {
