@@ -17,6 +17,21 @@
 </div>
 @endforeach
 
+
+
+
+
+<div  class="row m-3 bg-white rounded">
+    @foreach($latest as $post)
+    <div class="col-12 col-md-4">
+      @include("blogs.includes.list") 
+    </div>
+    @endforeach
+</div>
+
+
+
+
  {{--
 @if($posts->currentPage() > 2)
 <a href="/index/{{$posts->currentPage()-1}}">prev</a>
