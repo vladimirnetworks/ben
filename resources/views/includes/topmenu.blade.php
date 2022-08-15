@@ -49,7 +49,7 @@
     <div id="mbsrch" class="col" style="display:none;height:100%;">
       <div class=" rounded row m-2" style="width:100%;background-color:white">
 
-        <form id="frm1" style="display: inherit;width:90%" id="frm0" method="post" action="https://www.benham.ir/search"> <input id="srchboxm" name="qsearch" class="col mr-1" placeholder="جستجو ..."
+        <form id="frm1"  style="align-items: center;display: flex;" class="col mr-1" method="post" action="https://www.benham.ir/search"> <input id="srchboxm" name="qsearch" class="" placeholder="جستجو ..."
           style="border:0px;outline: none;width:100%;background-color: transparent;" />  {{ csrf_field() }}</form>
         <img onClick="document.getElementById('frm0').submit()" src="https://www.behkiana.ir/icons/mag.png?" style="height:100%">
 
