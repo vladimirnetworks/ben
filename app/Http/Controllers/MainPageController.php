@@ -181,7 +181,12 @@ class MainPageController extends Controller
 
 
 
+        if ($t) {
         $t = json_decode(json_encode($t));
+        } else {
+            $t = "notfound";
+        }
+
 
 
         return view(
