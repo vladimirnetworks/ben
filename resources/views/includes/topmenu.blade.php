@@ -71,9 +71,9 @@
 
 $("#srchboxm").focusout(function(e){
 setTimeout(function() {
-  //$("#mbsrch").hide()
-  //$("#mbmag").fadeIn();
-  //$("#mbtitle").fadeIn();
+  $("#mbsrch").hide()
+  $("#mbmag").fadeIn();
+  $("#mbtitle").fadeIn();
 }, 500);
 
 
