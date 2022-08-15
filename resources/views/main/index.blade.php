@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div><a href="#">علمی</a></div>
+                <div><a href="##">علمی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
