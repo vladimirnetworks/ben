@@ -13,7 +13,7 @@
 
 
     <div id="mbtitle" class="col text-center text-lg-right" style=" align-items: center;   justify-content: center;display:flex;font-weight:bold;font-size:max(2vw, 1rem);height:100%">
-      <a href="/" class="bnh" style="white-space: nowrap;"> مجله‌ی اینترنتی
+      <a href="https://www.benham.ir" class="bnh" style="white-space: nowrap;"> مجله‌ی اینترنتی
         بهنام</a>
         
 
