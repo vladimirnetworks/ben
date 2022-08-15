@@ -74,7 +74,7 @@
         <div class="row mt-4" style="margin:0px">
 
 
-            @if(!$big && $now != 'search')
+            @if(!$big)
             @foreach($top6 as $k=>$top)
             <div class="col-6 col-md-2 mt-1 p-1 @if($k >= 4) d-none d-md-inline @endif">
                 <div class="rounded"
@@ -97,7 +97,7 @@
         </div>
 
 
-        @if($big && $now != 'search')
+        @if($big)
         <div class="p-3 m-3 bg-white rounded">
             <h3>{{$bigtitle}}</h3>
             <div class="row" style="margin:0px">
@@ -116,8 +116,7 @@
         @endif
 
 
-        
-        @if(!$big && $now != 'search')
+        @if(!$big)
         <div class="row" style="margin:0px">
             @foreach($groups as $kg => $group)
             <div class="col-md-6 col-lg-4 m-0">
