@@ -65,7 +65,10 @@
 
 
             <div class="rounded-bottom shadow text-center small p-1"
-                style="width:35vw;background-color:white;color:lightslategrey">پنج‌شنبه ۱۴۰۱/۰۱/۲۲</div>
+                style="width:35vw;background-color:white;color:lightslategrey">
+                {{date("h:i:s")}}
+            {{farsidate(date("Y-m-d"))}}
+            </div>
         </div>
 
         <div class="row mt-4" style="margin:0px">
