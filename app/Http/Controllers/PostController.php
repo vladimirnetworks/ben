@@ -71,8 +71,8 @@ class PostController extends start
         
         $cats = \Config::get('domain.cats');
 
-        dd(urldecode($cat));
-        $catx = $this->domain()->catss->where("title",$cat)->first();
+       
+        $catx = $this->domain()->catss->where("title",urldecode($cat))->first();
 
 
         //$keys = array_map("trim", explode(",", $cats[$cat]));
