@@ -61,7 +61,7 @@
         <div style="display:flex;justify-content: space-around;">
 
             <div class="rounded-bottom shadow text-center small p-1"
-                style="width:35vw;background-color:white;color:lightslategrey">افراد آنلاین : {{onlineusers()}}</div>
+                style="width:35vw;background-color:white;color:lightslategrey">افراد آنلاین : {{persiannumber(onlineusers())}}</div>
 
 
             <div class="rounded-bottom shadow text-center small p-1"
