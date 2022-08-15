@@ -162,10 +162,11 @@ class MainPageController extends Controller
         $tp = post::where("title" ,"like","%{$r->qsearch}%",'or',"text" ,"like","%{$r->qsearch}%")->take(50)->get();
 
      
-        dd($tp);
+        
 
         $t = [];
         foreach ($tp as $h) {
+            if (isset($h->domain->domain)) {
             $t[] = [
                 "host" => "https://".$h->domain->domain,
                 "url" => $h->url,
@@ -174,6 +175,7 @@ class MainPageController extends Controller
                 "title" => $h->domain->title,
                 "caption" => $h->title
             ];
+        }
         }
        
 
