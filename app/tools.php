@@ -257,3 +257,14 @@ function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
        return persiannumber(gregorian_to_jalali($parsd['year'],$parsd['month'],$parsd['day'],"/"));
        
    }
+
+   function dayofweek() {
+       $x[1] = 'دوشنبه';
+       $x[2] = 'سه‌شنبه';
+       $x[3] = 'چهارشنبه';
+       $x[4] = 'پنج‌شنبه';
+       $x[5] = 'جمعه';
+       $x[6] = 'شنبه';
+       $x[7] = 'یک‌شنبه';
+     return $x[date('w')];
+   }

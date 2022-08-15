@@ -66,7 +66,7 @@
 
             <div class="rounded-bottom shadow text-center small p-1"
                 style="width:35vw;background-color:white;color:lightslategrey">
-                {{date("h:i:s")}}
+              {{ dayofweek()}}
             {{farsidate(date("Y-m-d"))}}
             </div>
         </div>
