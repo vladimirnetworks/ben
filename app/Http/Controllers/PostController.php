@@ -91,9 +91,9 @@ class PostController extends start
 
       
 
-        if (isset($catx->id)) {
-            $pageTitle = $cat;
-        }
+        //if (isset($catx->id)) {
+            $pageTitle = $cattitle;
+        //}
 
         return view("blogs.cat", ["posts" => $posts ,'pageinate'=>$postsrelish, "pageTitle" => $pageTitle,"cat"=>$cat]);
     }
