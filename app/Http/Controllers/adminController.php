@@ -303,6 +303,8 @@ class adminController extends Controller
 
         ])->first();
 
+        dd($post);exit;
+
         $post->title = $req->title;
         $post->tiny_text = $req->tiny_text;
         $post->text = $req->text;
