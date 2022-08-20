@@ -8,8 +8,19 @@
                 <a href="{{$post->host}}/post/{{$post->url}}-{{$post->id}}.html">
                  {{--<img style="width:100%;border-radius:4px" src="{{$post->thumb}}" />--}}
                  <div style="border-radius:4px;width:100%;padding-bottom:90%;position:relative;overflow:hidden">
+
+                    @if($post->thumb)
                     <img style="border-radius:4px;height:100%;position: absolute;left:-100%;right:-100%;margin:auto;" src="{{$post->thumb}}" />
-                 </div>
+                   
+                        
+                    @else
+
+                    <img style="border-radius:4px;height:100%;position: absolute;left:-100%;right:-100%;margin:auto;" src="/noimage.png" />
+
+                        
+                    @endif
+
+                </div>
                 </a>
         </div>
 
