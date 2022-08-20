@@ -256,7 +256,9 @@ class adminController extends Controller
 
             if (isset($posts) && count($posts) > 0) {
                 foreach ($posts as $post) {
+                    if (isset($post->domain->domain)) {
                     $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
+                    }
                 }
             }
         }
