@@ -60,7 +60,7 @@ class adminController extends Controller
 
         foreach ($x[2]['data'] as $h) {
 
-            
+
 
 
             preg_match_all('!src="(.*?)"!', $h['text'], $m);
@@ -134,7 +134,7 @@ class adminController extends Controller
             ]);
 
             $jcat = json_decode($x['cats'], true);
-           
+
 
             if (count($jcat)) {
                 foreach ($jcat as $kcat => $hitxaz) {
@@ -144,7 +144,7 @@ class adminController extends Controller
                         "title" => $kcat
                     ]);
 
-                   // dd($kcat);
+                    // dd($kcat);
 
                 }
             }
@@ -257,7 +257,7 @@ class adminController extends Controller
             if (isset($posts) && count($posts) > 0) {
                 foreach ($posts as $post) {
                     if (isset($post->domain->domain)) {
-                    $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
+                        $s1[] = ['type' => "post", "data" => ["id" => $post->id, "domain_id" => $post->domain_id, "domain" => $post->domain->domain], "title" => $post->title];
                     }
                 }
             }
@@ -296,23 +296,33 @@ class adminController extends Controller
 
     public function updatepost(Request $req, $domain, $post_id)
     {
-        $post = Post::where([
+      //  \DB::enableQueryLog();
+
+       
+
+
+
+
+
+        \DB::table('posts')->where([
+
+            "domain_id" => getDomainIdByName($domain),
+            "id" => $post_id
+
+        ])->update([
+            'title' => $req->title,
+            'tiny_text' => $req->tiny_text,
+            'text' => $req->text,
+            'url' => $req->url
+        ]);
+
+  
+        return ["data" => Post::where([
 
             ["domain_id", '=', getDomainIdByName($domain)],
             ["id", "=", $post_id]
 
-        ])->first();
-
-     
-
-        $post->title = $req->title;
-        $post->tiny_text = $req->tiny_text;
-        $post->text = $req->text;
-        $post->url = $req->url;
-
-       $post->save();
-
-        return ["data" => $post];
+        ])->first()];
     }
 
 
@@ -334,11 +344,18 @@ class adminController extends Controller
 
     function deletepost(Request $req, $domain, $post_id)
     {
-        return $post = Post::where([
+
+
+
+        $post = Post::where([
 
             ["domain_id", '=', getDomainIdByName($domain)],
             ["id", "=", $post_id]
 
         ])->delete();
+
+
+
+        return $post;
     }
 }
