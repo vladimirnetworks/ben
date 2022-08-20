@@ -310,7 +310,7 @@ class adminController extends Controller
         $post->text = $req->text;
         $post->url = $req->url;
 
-       # $post->save();
+       $post->save();
 
         return ["data" => $post];
     }
