@@ -6,11 +6,14 @@
 <div class="col-12 col-md-9">
     <div class="my-3 p-3 bg-white rounded">
 
-        <h1 class="h2">
+        <div class="row">
+        <h1 class="h2 col">
             {{$post->title}}
         </h1>
 
-        <div>{{$post->created_at}}</div>
+        <small class="ml-2" style="white-space:nowrap;color:grey">{{bendate($post->created_at)}}</small>
+
+    </div>
     
         <div class="m-2 bpost"> {!! $post->text !!} </div>
     

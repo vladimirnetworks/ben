@@ -167,6 +167,10 @@ function persiannumber($i)
     return str_replace($f, $r, $i);
 }
 
+function bendate($i) {
+ $x = explode(" ",$i);
+ return  farsidate($x[0]);
+}
 
 function englishnumber($i)
 {
