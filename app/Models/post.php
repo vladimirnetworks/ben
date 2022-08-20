@@ -10,6 +10,7 @@ class post extends Model
     use HasFactory;
 
     protected $fillable = [
+        
         'domain_id',
         'url',
         'title',
@@ -17,7 +18,10 @@ class post extends Model
         'tiny_text',
         'thumb',
         'tags',
-        'id'
+        'id',
+        'created_at',
+        'updated_at'
+
     ];
 
     public static function create2($inp) {

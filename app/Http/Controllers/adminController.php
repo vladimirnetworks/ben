@@ -60,6 +60,7 @@ class adminController extends Controller
 
         foreach ($x[2]['data'] as $h) {
 
+            
 
 
             preg_match_all('!src="(.*?)"!', $h['text'], $m);
@@ -77,6 +78,8 @@ class adminController extends Controller
             post::create([
                 "id" => $h['postid'],
                 "domain_id" => $h['blogid'],
+                "created_at" => $h['times'],
+                "updated_at" => $h['changitime'],
                 "title" => $h['title'],
                 "text" => $h['text'],
                 "thumb" => $h['thumb'],
