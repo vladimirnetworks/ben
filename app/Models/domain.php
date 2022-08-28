@@ -14,7 +14,8 @@ class domain extends Model
         'domain',
         'title',
         'cats',
-        'id'
+        'id',
+        'tags'
 
     ];
 

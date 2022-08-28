@@ -181,6 +181,7 @@ class adminController extends Controller
 
         $dom->title = $req->title;
         $dom->cats = $req->cat;
+        $dom->tags = $req->tags;
         $dom->save();
 
         return (["status" => "ok"]);
