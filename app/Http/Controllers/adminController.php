@@ -250,8 +250,14 @@ class adminController extends Controller
              
         }
 
-        $domain->related_posts = json_encode($pst);
+        if (isset($pst)) {
+        shuffle($pst);
+
+        $related15 = array_slice($pst, 0, 15, true);
+
+        $domain->related_posts = json_encode($related15);
         $domain->save();
+        }
 
     }
 
