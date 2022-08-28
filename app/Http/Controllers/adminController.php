@@ -163,7 +163,8 @@ class adminController extends Controller
 
         return [
             "title" => $dom->title,
-            "cats" => $dom->cats
+            "cats" => $dom->cats,
+            "tags" => $dom->tags
         ];
     }
     public function deletedomain($query)
