@@ -32,7 +32,7 @@
 <div class="col-12 col-md-3">
   
         <div class=" bg-white rounded my-3 py-3">
-        @foreach($related as $post)
+        @foreach($more as $post)
         @include("blogs.includes.list")
         @endforeach
         </div>

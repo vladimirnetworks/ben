@@ -15,7 +15,9 @@ class domain extends Model
         'title',
         'cats',
         'id',
-        'tags'
+        'tags',
+        'relatemade_at',
+        'related_posts'
 
     ];
 

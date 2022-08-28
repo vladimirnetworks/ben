@@ -36,6 +36,12 @@ Route::delete('admin/post/{domain}/{post_id}',"App\Http\Controllers\adminControl
 
 
 
+Route::get('admin/makerelated',"App\Http\Controllers\adminController@makerelated");
+
+
+
+
+
 
 
 Route::get('/post',"App\Http\Controllers\PostController@create");

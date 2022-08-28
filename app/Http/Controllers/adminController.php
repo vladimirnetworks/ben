@@ -188,6 +188,73 @@ class adminController extends Controller
         return (["status" => "ok2"]);
     }
 
+    public function makerelated()
+    {
+
+        $domain = domain::whereNotNull("tags")->orderBy('relatemade_at','ASC')->take(1)->get()[0];
+
+        $domain->relatemade_at = date("Y-m-d H:i:s");
+        $domain->save();
+
+
+
+        if (!$domain->tags) {
+            exit();
+        }
+        
+         $tags = explode(" ",$domain->tags);
+
+        
+         foreach ($tags as $k=>$htags) {
+            
+            if ($k == 0) {
+            $qq = \DB::table('domains')->Where("tags",'like',"%".$htags."%");
+            } else {
+                $qq->orWhere("tags",'like',"%".$htags."%");
+            }
+            
+         }
+
+        foreach ($qq->get() as $dom) {
+            if ($domain->id != $dom->id) {
+                   $posts = post::whereDomainId($dom->id)->take(2)->orderBy('id', 'DESC')->get(); 
+                  
+                   foreach ($posts as $post) {
+
+
+                    if (!$post->url) {
+                         $url = urlencode($post->title);
+                    } else {
+                        $url = $post->url;
+                    }
+
+
+                    if (!$post->tiny_text) {
+                            $caption = $post->title;
+                    } else {
+                        $caption = $post->tiny_text;
+                    }
+                    
+                   $pst[] = [
+                       "host"=>"https://".$dom->domain,
+                       "url"=>$url,
+                       "id"=>$post->id,
+                       "title"=>$post->title,
+                       "caption"=>$caption,
+                       "thumb"=>$post->thumb,
+                   ];
+
+                }
+
+            }
+             
+        }
+
+        $domain->related_posts = json_encode($pst);
+        $domain->save();
+
+    }
+
     public function regdomain(Request $req)
     {
         if (getDomainIdByName($req->domain) < 0) {

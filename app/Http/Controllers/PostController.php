@@ -132,11 +132,13 @@ class PostController extends start
 
         $post = $this->domain()->posts->whereId($id)->get()[0];
 
+        
+        $related = json_decode($this->domain()->related);
        
        // dd(DB::getQueryLog());
       
 
-        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "related" => $posts]);
+        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "related" => $related,"more" => $posts]);
     }
 
     /**
