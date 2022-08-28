@@ -133,8 +133,14 @@ class PostController extends start
         $post = $this->domain()->posts->whereId($id)->get()[0];
 
         
+
         $related = json_decode($this->domain()->related);
-       
+ 
+        
+        if ($this->domain()->domain == 'martialarts.benham.ir') {
+          dd($related);
+        }
+
        // dd(DB::getQueryLog());
       
 
