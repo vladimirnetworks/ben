@@ -138,7 +138,7 @@ class PostController extends start
  
         
         if ($this->domain()->domain == 'martialarts.benham.ir') {
-          dd($related);
+          dd($this->domain()->related);
         }
 
        // dd(DB::getQueryLog());
