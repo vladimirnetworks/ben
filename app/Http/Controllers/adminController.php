@@ -184,7 +184,7 @@ class adminController extends Controller
         $dom->tags = $req->tags;
         $dom->save();
 
-        return (["status" => "ok"]);
+        return (["status" => "ok2"]);
     }
 
     public function regdomain(Request $req)
