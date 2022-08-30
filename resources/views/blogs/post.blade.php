@@ -132,7 +132,7 @@
      });
   */
 
-  fstat.append('<img src="'+'https://c.statcounter.com/12789453/0/c7f1b034/1/?'+Math.random()+'"/>');
+  fstat.append($('<img src="'+'https://c.statcounter.com/12789453/0/c7f1b034/1/?'+Math.random()+'"/>'));
   var hrefx= $(this).attr('href');
   
   hrefx = hrefx .replace("https://www.instagram.com/p/","instagram://media?id=");
