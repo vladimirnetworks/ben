@@ -2,7 +2,7 @@
 
 
   @if(hname() == 'tasseography.benham.ir')
-<div  id="motvldc"  class="container" style="background-color: white;direction:ltr;text-align:center; position:fixed;left:0px;bottom:-100%; -o-transition:1.5s;-ms-transition:1.5s;-moz-transition:1.5s;-webkit-transition:1.5s;transition:1.5s;width:100%">
+<div  id="motvldc"  style="background-color: white;direction:ltr;text-align:center; position:fixed;left:0px;bottom:-100%; -o-transition:1.5s;-ms-transition:1.5s;-moz-transition:1.5s;-webkit-transition:1.5s;transition:1.5s;width:100%">
 
 
     
