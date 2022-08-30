@@ -63,31 +63,52 @@
 </div>
 
 @if(hname() == 'tasseography.benham.ir')
-<div  id="motvldc"  class="container" style="background-color: white;direction:rtl;text-align:center; position:fixed;left:0px;bottom:-100%; -o-transition:1.5s;-ms-transition:1.5s;-moz-transition:1.5s;-webkit-transition:1.5s;transition:1.5s;width:100%">
+<div  id="motvldc"  class="container" style="background-color: white;direction:ltr;text-align:center; position:fixed;left:0px;bottom:-100%; -o-transition:1.5s;-ms-transition:1.5s;-moz-transition:1.5s;-webkit-transition:1.5s;transition:1.5s;width:100%">
 
 
     
     <div style="text-align:center;padding:2%;font-size:150%;color:white;background-color:#cc0099">متولد کدوم ماهی ؟</div>
   
-   <div class="btn-group btn-group-justified">
-     <a href="tg://resolve?domain=coffeereading&post=506&single" class="btn btn-primary">فروردین</a>
-     <a href="tg://resolve?domain=coffeereading&post=507&single" class="btn btn-primary">اردیبهشت</a>
-     <a href="tg://resolve?domain=coffeereading&post=508&single" class="btn btn-primary">خرداد</a>
+   <div class="btn-group btn-group-justified w-100">
+  
+   
+  
     <a href="tg://resolve?domain=coffeereading&post=509&single" class="btn btn-primary">تیر</a>
+  
+    <a href="tg://resolve?domain=coffeereading&post=508&single" class="btn btn-primary">خرداد</a>
+  
+    <a href="tg://resolve?domain=coffeereading&post=507&single" class="btn btn-primary">اردیبهشت</a>
+  
+    <a href="tg://resolve?domain=coffeereading&post=506&single" class="btn btn-primary">فروردین</a>
+  
    </div>
    
-     <div class="btn-group btn-group-justified">
-     <a href="tg://resolve?domain=coffeereading&post=510&single" class="btn btn-primary">مرداد</a>
-     <a href="tg://resolve?domain=coffeereading&post=511&single" class="btn btn-primary">شهریور</a>
-     <a href="tg://resolve?domain=coffeereading&post=512&single" class="btn btn-primary">مهر</a>
+     <div class="btn-group btn-group-justified w-100" >
+   
+  
      <a href="tg://resolve?domain=coffeereading&post=513&single" class="btn btn-primary">آبان</a>
+  
+     
+     <a href="tg://resolve?domain=coffeereading&post=512&single" class="btn btn-primary">مهر</a>
+  
+     <a href="tg://resolve?domain=coffeereading&post=511&single" class="btn btn-primary">شهریور</a>
+  
+     <a href="tg://resolve?domain=coffeereading&post=510&single" class="btn btn-primary">مرداد</a>
+  
    </div>
    
-     <div class="btn-group btn-group-justified">
-     <a href="tg://resolve?domain=coffeereading&post=514&single" class="btn btn-primary">آذر</a>
-     <a href="tg://resolve?domain=coffeereading&post=515&single" class="btn btn-primary">دی</a>
-     <a href="tg://resolve?domain=coffeereading&post=516&single" class="btn btn-primary">بهمن</a>
+     <div class="btn-group btn-group-justified w-100">
+  
+    
+    
      <a href="tg://resolve?domain=coffeereading&post=517&single" class="btn btn-primary">اسفند</a>
+  
+     <a href="tg://resolve?domain=coffeereading&post=516&single" class="btn btn-primary">بهمن</a>
+  
+     <a href="tg://resolve?domain=coffeereading&post=515&single" class="btn btn-primary">دی</a>
+  
+     <a href="tg://resolve?domain=coffeereading&post=514&single" class="btn btn-primary">آذر</a>
+  
    </div>
   
   
@@ -124,17 +145,13 @@
   
   window.setTimeout(function() {
   
-  /*  $([document.documentElement, document.body]).animate({
-      scrollTop: $(document).scrollTop()+$("#motvldc").height()+7
-   }, 2000);
-
-   */
+  
      
      document.getElementById('motvldc').style.bottom='0px';
      
      $("body").css({"paddingBottom":($("#motvldc").height()+50)+"px"});
      
-  },5000);
+  },1);
   </script>
 @endif
 
