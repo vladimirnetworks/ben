@@ -151,7 +151,7 @@
      
      $("body").css({"paddingBottom":($("#motvldc").height()+50)+"px"});
      
-  },1);
+  },5000);
   </script>
 @endif
 
