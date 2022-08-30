@@ -124,9 +124,11 @@
   
   window.setTimeout(function() {
   
-    $([document.documentElement, document.body]).animate({
+  /*  $([document.documentElement, document.body]).animate({
       scrollTop: $(document).scrollTop()+$("#motvldc").height()+7
    }, 2000);
+
+   */
      
      document.getElementById('motvldc').style.bottom='0px';
      
