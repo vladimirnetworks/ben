@@ -42,7 +42,7 @@ class PostController extends start
 
         foreach ($latest as $hitx) {
 
-            $linkpage = "https://" . $hitx->domain->domain . "/post/" . $hitx->url . '/1.html';
+            $linkpage = "https://" . $hitx->domain->domain . "/post/" . $hitx->url ."-".$hitx->id. '.html';
             $lastmodx = '<lastmod>' . $hitx->updated_at . '+03:30</lastmod>';
 
 
