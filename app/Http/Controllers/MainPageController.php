@@ -8,13 +8,53 @@ use Illuminate\Http\Request;
 
 class MainPageController extends Controller
 {
+
+
+    public function sitemap()
+    {
+
+        $posts = post::orderBy('updated_at', 'desc')->limit(1000)->get();
+
+        $blx = [];
+       // dd($posts[0]->domain->domain);
+
+        foreach ($posts as $hpost) {
+        
+            if (isset($hpost->domain) && !isset($blx[$hpost->domain->domain])) {
+               $blx[$hpost->domain->domain] = $hpost;
+            }
+        }
+
+        $sitemap =  '<?xml version="1.0" encoding="UTF-8"?>
+   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+        foreach ($blx as $k => $hitx) {
+
+            $linkpage = "https://" . $hitx->domain->domain . '/sitemap.xml';
+            $lastmodx = '<lastmod>' . $hitx->updated_at . '+03:30</lastmod>';
+
+
+            $sitemap .=  '<sitemap>
+' . '<loc>' . $linkpage . '</loc>
+' . $lastmodx . '
+</sitemap>
+';
+        }
+
+        $sitemap .=  "</sitemapindex>";
+
+        return response($sitemap, 200, [
+            'Content-Type' => 'application/xml'
+        ]);
+    }
+
     public function index($cat = "")
     {
 
 
         $top6 = file_get_contents("top6.json");
 
-        
+
 
 
 
@@ -118,7 +158,7 @@ class MainPageController extends Controller
             $bigx = $cating[$cat];
             $bigtitle = $bigx['title'];
 
-           
+
             foreach ($bigx['blogs'] as $blog) {
 
                 $ioid = $blog;
@@ -139,8 +179,8 @@ class MainPageController extends Controller
         }
 
 
-        
-       
+
+
 
 
 
@@ -159,30 +199,30 @@ class MainPageController extends Controller
     {
 
 
-        $tp = post::where("title" ,"like","%{$r->qsearch}%",'or',"text" ,"like","%{$r->qsearch}%")->take(50)->get();
+        $tp = post::where("title", "like", "%{$r->qsearch}%", 'or', "text", "like", "%{$r->qsearch}%")->take(50)->get();
 
-     
-        
+
+
 
         $t = [];
         foreach ($tp as $h) {
             if (isset($h->domain->domain)) {
-            $t[] = [
-                "host" => "https://".$h->domain->domain,
-                "url" => $h->url,
-                "id" => $h->id,
-                "thumb" => $h->thumb,
-                "title" => $h->domain->title,
-                "caption" => $h->title
-            ];
+                $t[] = [
+                    "host" => "https://" . $h->domain->domain,
+                    "url" => $h->url,
+                    "id" => $h->id,
+                    "thumb" => $h->thumb,
+                    "title" => $h->domain->title,
+                    "caption" => $h->title
+                ];
+            }
         }
-        }
-       
+
 
 
 
         if ($t) {
-        $t = json_decode(json_encode($t));
+            $t = json_decode(json_encode($t));
         } else {
             $t = "notfound";
         }
@@ -192,7 +232,7 @@ class MainPageController extends Controller
         return view(
             "main.index",
             [
-                "now"=>"search",
+                "now" => "search",
                 "groups" => null,
                 "top6" => null,
                 "big" => $t,
