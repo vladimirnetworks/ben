@@ -10,6 +10,19 @@ class MainPageController extends Controller
 {
 
 
+    public function robotstxt()
+    {
+
+        $rbt = "User-agent: *";
+        $rbt .= "\n";
+        $rbt .= "Allow: /";
+        $rbt .= "\n";
+        $rbt .= "Sitemap: https://".hname()."/sitemap.xml";
+
+        return response($rbt, 200, [
+            'Content-Type' => 'text/plain'
+        ]);
+    }
     public function sitemap()
     {
 
