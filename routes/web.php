@@ -49,6 +49,7 @@ if (hname() == 'www.benham.ir' || hname() == 'benham.ir' || hname() == 'benham2.
     Route::post('/search', "App\Http\Controllers\MainPageController@searchall");
 } else {
 
+    Route::get('/sitemap.xml', "App\Http\Controllers\PostController@sitemap");
     Route::get('/', "App\Http\Controllers\PostController@index");
     Route::get('/index/{page}', "App\Http\Controllers\PostController@index");
     Route::get('/cat/{cat}', "App\Http\Controllers\PostController@cat");
