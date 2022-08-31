@@ -73,7 +73,7 @@
 
   body {
     background-color: #eeeff1;
-    font-family: IRANSans;
+    font-family: IRANSans,Arial;
     /*font-size: 1.2rem;*/
     /*line-height: 2.1rem;*/
 
