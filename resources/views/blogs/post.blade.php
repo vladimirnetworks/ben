@@ -7,7 +7,7 @@
     <div class="my-3 p-3 bg-white rounded">
 
         <div class="row">
-        <h1 class="h2 col">
+        <h1 class="h4 col">
             {{$post->title}}
         </h1>
 
