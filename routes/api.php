@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+Route::get('admin/allurls',"App\Http\Controllers\adminController@allurls");
+
 Route::get('admin/search/{query}',"App\Http\Controllers\adminController@bigsearch");
 
 Route::get('admin/checkdomain/{query}',"App\Http\Controllers\adminController@checkdomain");
