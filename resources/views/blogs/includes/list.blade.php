@@ -28,7 +28,7 @@
             <a class="text-dark font-weight-bold"
                 href="{{$post->host}}/post/{{$post->url}}-{{$post->id}}.html">{{$post->title}}</a>
             <p class="m-2"><small><a class="text-dark"
-                        href="/post/{{$post->url}}-{{$post->id}}.html">{{$post->caption}}</a></small></p>
+                        href="{{$post->host}}/post/{{$post->url}}-{{$post->id}}.html">{{$post->caption}}</a></small></p>
         </div>
 
     </div>
