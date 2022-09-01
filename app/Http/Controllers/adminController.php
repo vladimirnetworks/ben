@@ -22,6 +22,8 @@ class adminController extends Controller
                if ($m) {
                 $p->url = preg_replace('![^a-z0-9A-Z\-]!',"",$p->url);
                 $p->url = preg_replace('![\-]+!',"-",$p->url);
+                $p->url = trim($p->url);
+                $p->url = trim($p->url,"-");
                   echo $m."::".$p->url."<br>";
                }
            }
