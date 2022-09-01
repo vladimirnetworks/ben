@@ -4,7 +4,7 @@
 
 
 
-  @if(hname() == 'tasseography.benham.ir')
+  @if(hname() == 'sus_tasseography.benham.ir')
 <div  id="motvldc"  style="background-color: white;direction:ltr;text-align:center; position:fixed;left:0px;bottom:-100%; -o-transition:1.5s;-ms-transition:1.5s;-moz-transition:1.5s;-webkit-transition:1.5s;transition:1.5s;width:100%">
 
 
