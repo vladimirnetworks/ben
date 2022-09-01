@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/bs/bootstrap.min.css">
 
 
-@if(hname() == 'www.benham.ir')
+
 <script type="text/javascript">
 setTimeout(function() {
 
@@ -20,10 +20,8 @@ setTimeout(function() {
   })();
 
 },3000);
-
-
 </script>
-@endif
+
 
 <script>
   /*! jQuery v3.5.1 | (c) JS Foundation and other contributors | jquery.org/license */
