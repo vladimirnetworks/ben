@@ -68,11 +68,6 @@ class MainPageController extends Controller
         $top6 = file_get_contents("top6.json");
 
 
-
-
-
-
-
         $cating =  file_get_contents('pinkcats.json');
 
 
