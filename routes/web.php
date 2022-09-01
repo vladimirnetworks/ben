@@ -46,8 +46,8 @@ Route::get('/robots.txt', "App\Http\Controllers\MainPageController@robotstxt");
 
 if (hname() == 'www.benham.ir' || hname() == 'benham.ir' || hname() == 'benham2.ir' || hname() == 'www.benham2.ir' || hname() == '192.168.1.216') {
 
-    Route::post('/about', "App\Http\Controllers\MainPageController@about");
-    Route::post('/contact-us', "App\Http\Controllers\MainPageController@contactus");
+    Route::get('/about', "App\Http\Controllers\MainPageController@about");
+    Route::get('/contact-us', "App\Http\Controllers\MainPageController@contactus");
     
     Route::get('/', "App\Http\Controllers\MainPageController@index");
     Route::get('/sitemap.xml', "App\Http\Controllers\MainPageController@sitemap");
