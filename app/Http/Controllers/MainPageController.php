@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class MainPageController extends Controller
 {
 
+    public function about() {
+
+    }
+
+
+    public function contactus() {
+        
+    }
+
+
 
     public function robotstxt()
     {

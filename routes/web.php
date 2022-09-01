@@ -52,6 +52,9 @@ if (hname() == 'www.benham.ir' || hname() == 'benham.ir' || hname() == 'benham2.
     Route::get('/{cat}', "App\Http\Controllers\MainPageController@index");
     Route::post('/search', "App\Http\Controllers\MainPageController@searchall");
 
+    Route::post('/about', "App\Http\Controllers\MainPageController@about");
+    Route::post('/contact-us', "App\Http\Controllers\MainPageController@contactus");
+
    
 
 } else {

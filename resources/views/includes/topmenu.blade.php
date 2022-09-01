@@ -18,9 +18,9 @@
         
 
         <div class="wbmnu d-none d-lg-inline" style="white-space: nowrap;">
-          <a href="#">صفحه اول</a>
-          <a href="#">نقشه سایت</a>
-          <a href="#">تماس با ما</a>
+          <a href="/">صفحه اول</a>
+          <a href="https://www.benham.ir/about">درباره‌ی سایت</a>
+          <a href="https://www.benham.ir/contact-us">تماس با ما</a>
         </div>
         
 
