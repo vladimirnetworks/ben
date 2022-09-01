@@ -10,7 +10,7 @@ class MainPageController extends Controller
 {
 
     public function about() {
-          return view("about");
+          return view("main.about");
     }
 
 
