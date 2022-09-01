@@ -5,7 +5,19 @@
 <link rel="stylesheet" href="/bs/bootstrap.min.css">
 
 
-
+@if(hname() == 'www.benham.ir')
+<script type="text/javascript">
+  (function(){
+  var now = new Date();
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.async = true;
+  var script_address = 'https://cdn.yektanet.com/js/benham.ir/native-benham.ir-27361.js';
+  script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+  head.appendChild(script);
+  })();
+</script>
+@endif
 
 <script>
   /*! jQuery v3.5.1 | (c) JS Foundation and other contributors | jquery.org/license */
