@@ -24,7 +24,7 @@ class adminController extends Controller
                 $p->url = preg_replace('![\-]+!',"-",$p->url);
                 $p->url = trim($p->url);
                 $p->url = trim($p->url,"-");
-                  echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' <br>";
+                  echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
                }
            }
     }
