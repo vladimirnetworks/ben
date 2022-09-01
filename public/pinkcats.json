@@ -33,4 +33,23 @@
     }
 
 
+    ,
+    "fal":{
+        "title":"فال و تعبیر خواب",
+        "blogs":["tasseography.benham.ir","astrology.benham.ir","cartomancy.benham.ir","oneirocritic.benham.ir"]
+    }
+
+
+    ,
+    "science":{
+        "title":"علمی",
+        "blogs":["knowledge.benham.ir","myplanet.benham.ir"]
+    }
+
+    ,
+    "bio":{
+        "title":"بیوگرافی",
+        "blogs":["mahooralvand.benham.ir","sararasoulzadeh.benham.ir","kingofpop.benham.ir","rambodjavan.benham.ir"]
+    }
+
 }
