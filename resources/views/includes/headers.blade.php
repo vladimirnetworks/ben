@@ -7,7 +7,7 @@
 
 
 <script type="text/javascript">
-setTimeout(function() {
+
 
   (function(){
   var now = new Date();
@@ -19,7 +19,7 @@ setTimeout(function() {
   head.appendChild(script);
   })();
 
-},3000);
+
 </script>
 
 
