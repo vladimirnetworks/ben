@@ -19,7 +19,9 @@ class adminController extends Controller
 
            foreach ($posts as $p) {
                $m = preg_match('![^a-z0-9A-Z\-]!',$p->url);
+               if ($m) {
                   echo $m."::".$p->url."<br>";
+               }
            }
     }
 
