@@ -130,7 +130,7 @@
             <div class="col-md-6 col-lg-4 m-0">
 
                 <div style="display:flex;width:100%;justify-content: space-between;align-items: center">
-                    <h4 class="m-4">{{$kg}}</h4> <a style="margin-left:2rem" href="#">بیشتر ...</a>
+                    <h4 class="m-4">{{$kg}}</h4> <a style="margin-left:2rem" href="{{$group['id']}}">بیشتر ...</a>
                 </div>
 
                 <div class="m-2 bg-white rounded">
