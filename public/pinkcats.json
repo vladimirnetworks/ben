@@ -61,13 +61,13 @@
 
     ,
     "makeup":{
-        "title":"",
+        "title":"آرایش و زیبایی",
         "blogs":["makeup.benham.ir","hair.benham.ir","nail.benham.ir"]
     }
 
     ,
     "travel":{
-        "title":"",
+        "title":"مسافرت و تفریح",
         "blogs":["shiraz.benham.ir","isfahan.benham.ir","kish.benham.ir"]
     }
 
