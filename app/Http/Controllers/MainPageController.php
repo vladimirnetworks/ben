@@ -15,7 +15,7 @@ class MainPageController extends Controller
 
 
     public function contactus() {
-        
+        return view("main.contact");
     }
 
 
