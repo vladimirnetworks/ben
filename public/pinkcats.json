@@ -19,4 +19,11 @@
     }
 
 
+    ,
+
+    "animals":{
+        "title":"سلامتی و تناسب اندام",
+        "blogs":["rabbit.benham.ir","bat.benham.ir","weirdanimals.benham.ir","panda.benham.ir"]
+    }
+
 }
