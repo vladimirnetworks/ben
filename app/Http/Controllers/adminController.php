@@ -15,7 +15,7 @@ class adminController extends Controller
 
     public function allurls()
     {
-           $posts = post::orderByd('id','desc')->limit(10)->get();
+           $posts = post::orderBy('id','desc')->limit(10)->get();
 
            foreach ($posts as $p) {
                   echo $p->url."<br>";
