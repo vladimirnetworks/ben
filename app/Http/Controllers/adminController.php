@@ -15,7 +15,7 @@ class adminController extends Controller
 
     public function allurls()
     {
-           $posts = post::orderBy('id','desc')->limit(10)->get();
+           $posts = post::orderBy('id','desc')->limit(5000)->get();
 
            foreach ($posts as $p) {
                $m = preg_match('![^a-z0-9A-Z\-]!',$p->url);
