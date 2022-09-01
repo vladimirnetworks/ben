@@ -18,7 +18,8 @@ class adminController extends Controller
            $posts = post::orderBy('id','desc')->limit(10)->get();
 
            foreach ($posts as $p) {
-                  echo $p->url."<br>";
+               $m = preg_match('![^a-z0-9A-Z\-]!',$p->url);
+                  echo $m."::".$p->url."<br>";
            }
     }
 
