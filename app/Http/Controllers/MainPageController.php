@@ -151,7 +151,7 @@ class MainPageController extends Controller
 
             }
 
-            $section[$h['title']]  = ['posts'=>$posts,"id"=>"idofcat"];
+            $section[$h['title']]  = ['posts'=>$posts,"id"=>$h['id']];
         }
 
 

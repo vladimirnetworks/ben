@@ -2,26 +2,31 @@
                   
 
     {
+        "id":"id1",
         "title":"آرایش و زیبایی",
          "blogs":[["makeup.benham.ir","latest"],"skin.benham.ir","nail.benham.ir"]
     } ,
 
     {
+        "id":"id1",
         "title":"آشپزی",
          "blogs":[["cooking.benham.ir","latest"],"seafood.benham.ir","pizza.benham.ir"]
     } ,
 
     {
+        "id":"id1",
         "title":"سلامتی",
          "blogs":[["isitbadforme.benham.ir","latest"],"hair.benham.ir","dietadvice.benham.ir"]
     } ,
 
     {
+        "id":"id1",
         "title":"سینما و تلوزیون",
          "blogs":[["kommissarrex.benham.ir","latest"],"jodhaakbar.benham.ir","eveslove.benham.ir"]
     } ,
 
     {
+        "id":"id1",
         "title":"مسافرت",
          "blogs":[["kish.benham.ir","latest"],"rasht.benham.ir","kerman.benham.ir"]
     } 
@@ -29,6 +34,7 @@
     ,
 
     {
+        "id":"id1",
         "title":"حیوانات",
          "blogs":[["duck.benham.ir","latest"],"bee.benham.ir","ape.benham.ir"]
     } 
