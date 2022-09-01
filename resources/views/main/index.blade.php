@@ -24,34 +24,36 @@
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div><a href="##">علمی</a></div>
+                <div><a href="tech">تکنولوژی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>سلامتی</div>
+                <div><a href="health">سلامتی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>بیوگرافی</div>
+                <div><a href="animals">حیوانات</a></div>
             </div>
 
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>آشپزی</div>
+                <div><a href="cooking">آشپزی</a></div>
             </div>
 
             <div class="col-4 col-md-3 text-center p-3">
-                <div>فال</div>
+                <div><a href="fal">فال</a></div>
             </div>
 
 
 
             <div class="d-none d-md-inline col-4 col-md-3 text-center p-3">
-                <div>پزشکی</div>
+               
+                <div><a href="science">علمی</a></div>
             </div>
 
             <div class="d-none d-md-inline col-4 col-md-3 text-center p-3">
-                <div>تکنولوژی</div>
+               
+                <div><a href="bio">بیوگرافی</a></div>
             </div>
 
 
