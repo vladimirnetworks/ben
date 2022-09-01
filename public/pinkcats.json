@@ -52,4 +52,24 @@
         "blogs":["mahooralvand.benham.ir","sararasoulzadeh.benham.ir","kingofpop.benham.ir","rambodjavan.benham.ir"]
     }
 
+
+
+
+
+
+
+
+    ,
+    "makeup":{
+        "title":"",
+        "blogs":["makeup.benham.ir","hair.benham.ir","nail.benham.ir"]
+    }
+
+    ,
+    "travel":{
+        "title":"",
+        "blogs":["shiraz.benham.ir","isfahan.benham.ir","kish.benham.ir"]
+    }
+
+
 }

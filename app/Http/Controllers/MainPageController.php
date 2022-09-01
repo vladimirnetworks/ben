@@ -151,7 +151,7 @@ class MainPageController extends Controller
 
             }
 
-            $section[$h['title']]  = $posts;
+            $section[$h['title']]  = ['posts'=>$posts];
         }
 
 

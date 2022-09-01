@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="m-2 bg-white rounded">
-                    @foreach($group as $post)
+                    @foreach($group['posts'] as $post)
                     @include("blogs.includes.list")
                     @endforeach
                 </div>
