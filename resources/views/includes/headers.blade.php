@@ -7,6 +7,8 @@
 
 @if(hname() == 'www.benham.ir')
 <script type="text/javascript">
+setTimeout(function() {
+
   (function(){
   var now = new Date();
   var head = document.getElementsByTagName('head')[0];
@@ -16,6 +18,10 @@
   script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
   head.appendChild(script);
   })();
+
+},3000);
+
+
 </script>
 @endif
 
