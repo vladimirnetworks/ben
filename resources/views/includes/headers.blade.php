@@ -122,7 +122,7 @@
 
   body {
     background-color: #eeeff1;
-    font-family: IRANSans,Arial;
+    font-family: "IRANSans", Helvetica, Arial, Sans-Serif;
     /*font-size: 1.2rem;*/
     /*line-height: 2.1rem;*/
 
