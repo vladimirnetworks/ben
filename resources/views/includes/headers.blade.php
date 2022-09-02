@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/bs/bootstrap.min.css">
 
 <meta name="sabavision_zone" content="11591-Z642" />
-
+<meta name="keywords" content="shoe, shoes, shoee, shos, footwear" />
 <script>
   var sabaVisionWebsiteID = "e35054ca-80ec-4ac9-a857-8105bb05eb3e"; var sabaVisionWebsitePage = "ALL"
 </script>
