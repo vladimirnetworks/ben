@@ -24,7 +24,10 @@ class adminController extends Controller
                  preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
                 if (isset($m[1]) && isset($m[1][0])) {
                  
-                   echo "update `posts` set `thumb` = '".$m[1][0]."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+                    if (preg_match('!upid!',$m[1][0])) {
+                        echo "update `posts` set `thumb` = '".$m[1][0]."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+
+                    }
                 }
                
             }
