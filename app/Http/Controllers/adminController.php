@@ -25,7 +25,7 @@ class adminController extends Controller
                 echo "<br>";
             }
                  # echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
-               }
+               
            }
     }
 
