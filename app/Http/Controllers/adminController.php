@@ -18,6 +18,23 @@ class adminController extends Controller
            $posts = post::orderBy('id','desc')->limit(5000)->get();
 
            foreach ($posts as $p) {
+              
+            if (trim($p->thumb) == '') {
+                echo $p->id;
+
+                echo "<br>";
+            }
+                 # echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+               }
+           }
+    }
+
+
+    public function allurls()
+    {
+           $posts = post::orderBy('id','desc')->limit(5000)->get();
+
+           foreach ($posts as $p) {
                $m = preg_match('![^a-z0-9A-Z\-]!',$p->url);
                if ($m) {
                 $p->url = preg_replace('![^a-z0-9A-Z\-]!',"",$p->url);
