@@ -22,7 +22,7 @@ class adminController extends Controller
             if (trim($p->thumb) == '') {
                 echo $p->id;
                  preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
-                 print_r($m);
+                 echo ($m[1][0]);
                 echo "<br>";
             }
                  # echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
