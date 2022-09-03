@@ -18,7 +18,7 @@
         <div class="m-2 bpost"> {!! $post->text !!} </div>
     
 
-
+        <div id="sabavision_zone_11590-Z416_plate"></div>
 
 
     </div>
