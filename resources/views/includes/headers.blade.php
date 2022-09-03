@@ -38,7 +38,8 @@
 </script>
 
 <script>
-  var sabaVisionWebsiteID = "e35054ca-80ec-4ac9-a857-8105bb05eb3e"; var sabaVisionWebsitePage = "ALL"
+  var sabaVisionWebsiteID = "e35054ca-80ec-4ac9-a857-8105bb05eb3e";
+  var sabaVisionWebsitePage = "ALL"
 </script>
 
 <script src="https://plus.sabavision.com/dox/dox.min.js"></script>
