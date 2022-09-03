@@ -25,8 +25,8 @@ class adminController extends Controller
                 if (isset($m[1]) && isset($m[1][0])) {
                  
                     if (preg_match('!upid!',$m[1][0])) {
-                       # echo "update `posts` set `thumb` = '".$m[1][0]."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
-                       echo "update `posts` set `thumb` = '' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+                        echo "update `posts` set `thumb` = '".$m[1][0]."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+                      # echo "update `posts` set `thumb` = '' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
 
                     }
                 }
