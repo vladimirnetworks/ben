@@ -35,6 +35,7 @@ class adminController extends Controller
            }
            $iall = array_unique($iall);
            reset($iall);
+           print_r($iall);exit;
           echo json_encode($iall);
     }
 
