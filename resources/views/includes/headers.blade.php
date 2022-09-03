@@ -50,7 +50,7 @@
   var script = document.createElement('script');
   script.async = true;
   var script_address = 'https://plus.sabavision.com/dox/dox.min.js';
-  script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+  script.src = script_address;
   head.appendChild(script);
   })();
 </script>  
