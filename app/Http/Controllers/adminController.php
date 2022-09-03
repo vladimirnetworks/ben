@@ -30,7 +30,7 @@ class adminController extends Controller
     }
 
 
-    public function allurls()
+    public function xallurls()
     {
            $posts = post::orderBy('id','desc')->limit(5000)->get();
 
