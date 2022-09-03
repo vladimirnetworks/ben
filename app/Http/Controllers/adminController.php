@@ -36,7 +36,7 @@ class adminController extends Controller
            $iall = array_unique($iall);
            $iall = array_values($iall);
           
-          echo str_replace('","',"\"\n,\n\"",json_encode($iall));
+          echo str_replace('","',"\"\n,\"",json_encode($iall));
     }
 
 
