@@ -13,7 +13,33 @@ class adminController extends Controller
 {
     //
 
+
     public function allurls()
+    {
+           $posts = post::orderBy('id','desc')->limit(5000)->get();
+
+           foreach ($posts as $p) {
+
+            preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
+            $alimg = $m[1];
+              
+            if (trim($p->thumb) != '') {
+               $alimg[] = $p->thumb;
+               
+            }
+
+            foreach ($alimg as $ii) {
+                $iall[] = $ii;
+            }
+               
+           }
+
+           echo count($iall);
+    }
+
+
+
+    public function allurls0()
     {
            $posts = post::orderBy('id','desc')->limit(5000)->get();
 
