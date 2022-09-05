@@ -267,7 +267,7 @@ class PostController extends start
         // dd(DB::getQueryLog());
 
 
-        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "related" => $related, "more" => $posts]);
+        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title,"ldjson" => $post->ldjson, "related" => $related, "more" => $posts]);
     }
 
     /**

@@ -2,7 +2,11 @@
 <title>@if (isset($pageTitle)) {{$pageTitle}} @else benham.ir @endif</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+@if (isset($ldjson))
+<script type="application/ld+json">
+{!!$ldjson!!}
+</script>
+@endif
 <style>
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
