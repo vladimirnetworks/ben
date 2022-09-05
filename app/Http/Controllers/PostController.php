@@ -254,7 +254,7 @@ class PostController extends start
                 $zz[] = $this::xben($hh, $k);
             }
 
-            $post->text = str_replace($m[1], $zz, $post);
+            $post->text = str_replace($m[1], $zz, $post->text);
         }
 
         $related = json_decode($this->domain()->related_posts);
