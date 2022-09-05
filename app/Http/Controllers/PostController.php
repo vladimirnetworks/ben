@@ -226,7 +226,8 @@ class PostController extends start
         });
     
     
-    
+        jwplayer().stop();
+        jwplayer().setMute(false);
     
     </script>';
         return $aa;
