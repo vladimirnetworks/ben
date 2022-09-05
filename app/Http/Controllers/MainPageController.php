@@ -54,7 +54,7 @@ class MainPageController extends Controller
         foreach ($blx as $k => $hitx) {
 
             $linkpage = "https://" . $hitx->domain->domain . '/sitemap.xml';
-            $lastmodx = '<lastmod>' . $hitx->updated_at . '+03:30</lastmod>';
+            $lastmodx = '<lastmod>' . str_replace(" ","T",$hitx->updated_at) . '+03:30</lastmod>';
 
 
             $sitemap .=  '<sitemap>
