@@ -43,7 +43,7 @@ class PostController extends start
         foreach ($latest as $hitx) {
 
             $linkpage = "https://" . $hitx->domain->domain . "/post/" . $hitx->url . "-" . $hitx->id . '.html';
-            $lastmodx = '<lastmod>' . str_replace(" ","T",$hitx->updated_at) . '+03:30</lastmod>';
+            $lastmodx = '<lastmod>' . str_replace(" ", "T", $hitx->updated_at) . '+03:30</lastmod>';
 
 
             $sitemap .=  '<url>
@@ -164,7 +164,7 @@ class PostController extends start
      */
 
 
-    public static function xben($mm, $k)
+    public static function xben($mm, $k,$img)
     {
 
         $aa = '
@@ -196,7 +196,7 @@ class PostController extends start
                 "qualityLabels": { },
             
         "playlist": [{
-        "image": "",
+        "image": "'.$img.'",
         "sources": [
     
             
@@ -225,9 +225,14 @@ class PostController extends start
         }
         });
     
-    
-        jwplayer().stop();
-        jwplayer().setMute(false);
+        setTimeout(function() {
+
+            jwplayer().stop();
+            jwplayer().setMute(false);
+
+            
+        },200);
+
     
     </script>';
         return $aa;
@@ -251,12 +256,16 @@ class PostController extends start
         if (preg_match("!https://.*?.namasha.com/dash/.*?/Manifest.mpd!", $post->text)) {
             $post->text  = $benmash . $post->text;
 
-            preg_match_all("!(https://.*?.namasha.com/dash/.*?/Manifest.mpd)!", $post->text, $m);
-            foreach ($m[1] as $k => $hh) {
-                $zz[] = $this::xben($hh, $k);
+            preg_match_all('!<video.*?poster="(.*?)".*?>.*?source.*?src="(.*?)".*?<\/video>!s', $post->text, $m);
+
+            $imgs = $m[1];
+            $vids = $m[2];
+
+            foreach ($vids as $k => $hh) {
+                $zz[] = $this::xben($hh,$k,$imgs[$k]);
             }
 
-            $post->text = str_replace($m[1], $zz, $post->text);
+            $post->text = str_replace($m[0], $zz, $post->text);
         }
 
         $related = json_decode($this->domain()->related_posts);
@@ -267,7 +276,7 @@ class PostController extends start
         // dd(DB::getQueryLog());
 
 
-        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title,"ldjson" => $post->ldjson, "related" => $related, "more" => $posts]);
+        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "ldjson" => $post->ldjson, "related" => $related, "more" => $posts]);
     }
 
     /**
