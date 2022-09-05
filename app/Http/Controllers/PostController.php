@@ -175,6 +175,7 @@ class PostController extends start
         "playbackRateControls": "true",
         "timeSliderAbove": "true",
         "width": "100%",
+        "mute": false,
         "aspectratio": "16:9",
         "skin":
         {
