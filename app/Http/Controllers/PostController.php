@@ -219,7 +219,7 @@ class PostController extends start
             
     
     
-        "autostart": "viewable",
+      
     
         "logo": {
             "file": "",
@@ -230,14 +230,6 @@ class PostController extends start
         }
         });
     
-        setTimeout(function() {
-
-            jwplayer().stop();
-            jwplayer().setMute(false);
-
-
-        },1000);
-
     
     </script>';
         return $aa;
