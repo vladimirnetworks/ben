@@ -170,6 +170,12 @@ class PostController extends start
         $aa = '
         <div id="b' . $k . 'video-player"></div>
         <script>
+
+
+        jwplayer().stop();
+        jwplayer().setMute(false);
+
+        
         jwplayer("b' . $k . 'video-player").setup({
     
         "playbackRateControls": "true",
@@ -230,8 +236,8 @@ class PostController extends start
             jwplayer().stop();
             jwplayer().setMute(false);
 
-            
-        },200);
+
+        },1000);
 
     
     </script>';
