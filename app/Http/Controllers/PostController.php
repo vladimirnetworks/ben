@@ -247,7 +247,7 @@ class PostController extends start
 
 
         if (preg_match("!https://.*?.namasha.com/dash/.*?/Manifest.mpd!", $post->text)) {
-            //$post->text  = $benmash . $post->text;
+            $post->text  = $benmash . $post->text;
 
             preg_match_all("!(https://.*?.namasha.com/dash/.*?/Manifest.mpd)!", $post->text, $m);
             foreach ($m[1] as $k => $hh) {
