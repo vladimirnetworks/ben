@@ -172,10 +172,9 @@ class PostController extends start
         <script>
 
 
-        jwplayer().stop();
-        jwplayer().setMute(false);
+ 
 
-        
+
         jwplayer("b' . $k . 'video-player").setup({
     
         "playbackRateControls": "true",
