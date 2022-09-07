@@ -13,8 +13,41 @@ class adminController extends Controller
 {
     //
 
-
     public function allurls()
+    {
+        $posts = post::orderBy('id', 'desc')->limit(5000)->get();
+
+        foreach ($posts as $p) {
+
+            $dome = domain::whereId($p->domain_id)->first();
+            if (isset($dome->id)) {
+                preg_match_all('!<a[^>]+href="([^">]+)"!', $p->text, $m);
+                $alimg = $m[1];
+
+               /* if (trim($p->thumb) != '') {
+                    $alimg[] = $p->thumb;
+                }*/
+
+                foreach ($alimg as $ii) {
+                    if (preg_match("!\.jpg|\.jpeg|\.png|\.bmp!i", $ii)) {
+                        $iall[] = $ii;
+                    }
+                }
+            }
+        }
+        $iall = array_unique($iall);
+        $iall = array_values($iall);
+
+        $choonk = array_chunk($iall, 500);
+
+
+        foreach ($choonk as $hchink) {
+            echo str_replace('","', "\"\n,\"", json_encode($hchink));
+            echo "\n################\n";
+        }
+    }
+
+    public function allurls_best()
     {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
