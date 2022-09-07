@@ -29,7 +29,9 @@ class adminController extends Controller
             }
 
             foreach ($alimg as $ii) {
+                if (!preg_match("!picofile!",$ii)) {
                 $iall[] = $ii;
+                }
             }
                
            }
