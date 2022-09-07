@@ -16,75 +16,72 @@ class adminController extends Controller
 
     public function allurls()
     {
-           $posts = post::orderBy('id','desc')->limit(5000)->get();
+        $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
-           foreach ($posts as $p) {
+        foreach ($posts as $p) {
 
-            $dome = domain::whereId($p->domain_id);
+            $dome = domain::whereId($p->domain_id)->first();
             if (isset($dome->id)) {
-            preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
-            $alimg = $m[1];
-              
-            if (trim($p->thumb) != '') {
-               $alimg[] = $p->thumb;
-               
-            }
+                preg_match_all('!<img[^>]+src="([^">]+)"!', $p->text, $m);
+                $alimg = $m[1];
 
-            foreach ($alimg as $ii) {
-                if (!preg_match("!picofile!",$ii)) {
-                $iall[] = $ii;
+                if (trim($p->thumb) != '') {
+                    $alimg[] = $p->thumb;
+                }
+
+                foreach ($alimg as $ii) {
+                    if (!preg_match("!picofile!", $ii)) {
+                        $iall[] = $ii;
+                    }
                 }
             }
-               
         }
-           }
-           $iall = array_unique($iall);
-           $iall = array_values($iall);
-          
-          echo str_replace('","',"\"\n,\"",json_encode($iall));
+        $iall = array_unique($iall);
+        $iall = array_values($iall);
+
+        echo str_replace('","', "\"\n,\"", json_encode($iall));
     }
 
 
 
     public function allurls0()
     {
-           $posts = post::orderBy('id','desc')->limit(5000)->get();
+        $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
-           foreach ($posts as $p) {
-              
+        foreach ($posts as $p) {
+
             if (trim($p->thumb) == '') {
-               # echo $p->id;
-                 preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
+                # echo $p->id;
+                preg_match_all('!<img[^>]+src="([^">]+)"!', $p->text, $m);
                 if (isset($m[1]) && isset($m[1][0])) {
-                 
-                    if (preg_match('!upid!',$m[1][0])) {
-                        echo "update `posts` set `thumb` = '".$m[1][0]."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
-                      # echo "update `posts` set `thumb` = '' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+
+                    if (preg_match('!upid!', $m[1][0])) {
+                        echo "update `posts` set `thumb` = '" . $m[1][0] . "' where `domain_id` = '" . $p->domain_id . "' and `id` = '" . $p->id . "' ; <br>";
+                        # echo "update `posts` set `thumb` = '' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
 
                     }
                 }
-               
             }
-                 # echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
-               
-           }
+            # echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
+
+        }
     }
 
 
     public function xallurls()
     {
-           $posts = post::orderBy('id','desc')->limit(5000)->get();
+        $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
-           foreach ($posts as $p) {
-               $m = preg_match('![^a-z0-9A-Z\-]!',$p->url);
-               if ($m) {
-                $p->url = preg_replace('![^a-z0-9A-Z\-]!',"",$p->url);
-                $p->url = preg_replace('![\-]+!',"-",$p->url);
+        foreach ($posts as $p) {
+            $m = preg_match('![^a-z0-9A-Z\-]!', $p->url);
+            if ($m) {
+                $p->url = preg_replace('![^a-z0-9A-Z\-]!', "", $p->url);
+                $p->url = preg_replace('![\-]+!', "-", $p->url);
                 $p->url = trim($p->url);
-                $p->url = trim($p->url,"-");
-                  echo "update `posts` set `url` = '".$p->url."' where `domain_id` = '".$p->domain_id."' and `id` = '".$p->id."' ; <br>";
-               }
-           }
+                $p->url = trim($p->url, "-");
+                echo "update `posts` set `url` = '" . $p->url . "' where `domain_id` = '" . $p->domain_id . "' and `id` = '" . $p->id . "' ; <br>";
+            }
+        }
     }
 
     public function importcatrelish()
@@ -265,7 +262,7 @@ class adminController extends Controller
     public function makerelated()
     {
 
-        $domain = domain::whereNotNull("tags")->orderBy('relatemade_at','ASC')->take(1)->get()[0];
+        $domain = domain::whereNotNull("tags")->orderBy('relatemade_at', 'ASC')->take(1)->get()[0];
 
         $domain->relatemade_at = date("Y-m-d H:i:s");
         $domain->save();
@@ -275,64 +272,59 @@ class adminController extends Controller
         if (!$domain->tags) {
             exit();
         }
-        
-         $tags = explode(" ",$domain->tags);
 
-        
-         foreach ($tags as $k=>$htags) {
-            
+        $tags = explode(" ", $domain->tags);
+
+
+        foreach ($tags as $k => $htags) {
+
             if ($k == 0) {
-            $qq = \DB::table('domains')->Where("tags",'like',"%".$htags."%");
+                $qq = \DB::table('domains')->Where("tags", 'like', "%" . $htags . "%");
             } else {
-                $qq->orWhere("tags",'like',"%".$htags."%");
+                $qq->orWhere("tags", 'like', "%" . $htags . "%");
             }
-            
-         }
+        }
 
         foreach ($qq->get() as $dom) {
             if ($domain->id != $dom->id) {
-                   $posts = post::whereDomainId($dom->id)->take(2)->orderBy('id', 'DESC')->get(); 
-                  
-                   foreach ($posts as $post) {
+                $posts = post::whereDomainId($dom->id)->take(2)->orderBy('id', 'DESC')->get();
+
+                foreach ($posts as $post) {
 
 
                     if (!$post->url) {
-                         $url = urlencode($post->title);
+                        $url = urlencode($post->title);
                     } else {
                         $url = $post->url;
                     }
 
 
                     if (!$post->tiny_text) {
-                            $caption = $post->title;
+                        $caption = $post->title;
                     } else {
                         $caption = $post->tiny_text;
                     }
-                    
-                   $pst[] = [
-                       "host"=>"https://".$dom->domain,
-                       "url"=>$url,
-                       "id"=>$post->id,
-                       "title"=>$post->title,
-                       "caption"=>$caption,
-                       "thumb"=>$post->thumb,
-                   ];
 
+                    $pst[] = [
+                        "host" => "https://" . $dom->domain,
+                        "url" => $url,
+                        "id" => $post->id,
+                        "title" => $post->title,
+                        "caption" => $caption,
+                        "thumb" => $post->thumb,
+                    ];
                 }
-
             }
-             
         }
 
         if (isset($pst)) {
-        shuffle($pst);
+            shuffle($pst);
 
-        $related15 = array_slice($pst, 0, 15, true);
+            $related15 = array_slice($pst, 0, 15, true);
 
-        $domain->related_posts = json_encode($related15);
-        $domain->save();
+            $domain->related_posts = json_encode($related15);
+            $domain->save();
         }
-
     }
 
     public function regdomain(Request $req)
@@ -445,9 +437,9 @@ class adminController extends Controller
 
     public function updatepost(Request $req, $domain, $post_id)
     {
-      //  \DB::enableQueryLog();
+        //  \DB::enableQueryLog();
 
-       
+
 
 
 
@@ -465,7 +457,7 @@ class adminController extends Controller
             'url' => $req->url
         ]);
 
-  
+
         return ["data" => Post::where([
 
             ["domain_id", '=', getDomainIdByName($domain)],
