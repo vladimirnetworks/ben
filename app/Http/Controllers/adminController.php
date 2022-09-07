@@ -20,6 +20,8 @@ class adminController extends Controller
 
            foreach ($posts as $p) {
 
+            $dome = domain::whereId($p->domain_id);
+            if (isset($dome->id)) {
             preg_match_all('!<img[^>]+src="([^">]+)"!',$p->text,$m);
             $alimg = $m[1];
               
@@ -34,6 +36,7 @@ class adminController extends Controller
                 }
             }
                
+        }
            }
            $iall = array_unique($iall);
            $iall = array_values($iall);
