@@ -39,7 +39,13 @@ class adminController extends Controller
         $iall = array_unique($iall);
         $iall = array_values($iall);
 
-        echo str_replace('","', "\"\n,\"", json_encode($iall));
+      $choonk = array_chunk($$iall,500);
+
+
+      foreach ($choonk as $hchink) {
+        echo str_replace('","', "\"\n,\"", json_encode($hchink));
+        echo "\n\n\n\n\n";
+      }
     }
 
 
