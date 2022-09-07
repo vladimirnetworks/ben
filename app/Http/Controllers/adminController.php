@@ -44,7 +44,7 @@ class adminController extends Controller
 
         foreach ($choonk as $hchink) {
             echo str_replace('","', "\"\n,\"", json_encode($hchink));
-            echo "\n\n\n\n\n";
+            echo "\n################\n";
         }
     }
 
