@@ -29,7 +29,7 @@ class adminController extends Controller
                 }*/
 
                 foreach ($alimg as $ii) {
-                    if (preg_match("!\.jpg|\.jpeg|\.png|\.bmp!i", $ii)) {
+                    if (!preg_match("!picofile\.com!i",$ii) && preg_match("!\.jpg|\.jpeg|\.png|\.bmp!i", $ii)) {
                         $iall[] = $ii;
                     }
                 }
