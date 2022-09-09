@@ -94,7 +94,7 @@
      document.getElementById('motvldc').style.bottom='0px';
      
      
-     $(".YEKTANET.yn-notification").css({"bottom":($("#motvldc").height()+50)+"px"});
+     
      $("body").css({"paddingBottom":($("#motvldc").height()+50)+"px"});
      
   },5000);
