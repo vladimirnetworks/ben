@@ -13,7 +13,7 @@ class adminController extends Controller
 {
     //
 
-    public function allurls()
+    public function allurls_heavy()
     {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
@@ -47,7 +47,7 @@ class adminController extends Controller
         }
     }
 
-    public function allurls_best()
+    public function allurls()
     {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
@@ -63,7 +63,7 @@ class adminController extends Controller
                 }
 
                 foreach ($alimg as $ii) {
-                    if (!preg_match("!picofile!", $ii)) {
+                    if (!preg_match("!picofile!", $ii) && !preg_match("!neptonblog!", $ii) && !preg_match("!tehpatogh!", $ii)) {
                         $iall[] = $ii;
                     }
                 }
