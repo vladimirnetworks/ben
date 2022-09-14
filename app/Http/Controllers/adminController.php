@@ -30,7 +30,10 @@ class adminController extends Controller
 
                 foreach ($alimg as $ii) {
                     if ( !preg_match("!tehpatogh!", $ii) && !preg_match("!picofile\.com!i",$ii) && preg_match("!\.jpg|\.jpeg|\.png|\.bmp!i", $ii)) {
+                        
+                        if (!preg_match("!upid.ir\?!",$ii)) {
                         $iall[] = $ii;
+                        }
                     }
                 }
             }
