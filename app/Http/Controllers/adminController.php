@@ -13,7 +13,7 @@ class adminController extends Controller
 {
     //
 
-    public function allurls()
+    public function allurls_best()
     {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
@@ -47,7 +47,7 @@ class adminController extends Controller
         }
     }
 
-    public function allurls_best()
+    public function allurls()
     {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
