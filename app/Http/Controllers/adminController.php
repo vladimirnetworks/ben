@@ -66,7 +66,7 @@ class adminController extends Controller
                 }
 
                 foreach ($alimg as $ii) {
-                    if (!preg_match("!picofile!", $ii) && !preg_match("!upid!", $ii) && !preg_match("!tehpatogh!", $ii)) {
+                    if (!preg_match("!picofile!", $ii) && !preg_match("!upid!", $ii) && !preg_match("!tehpatogh!", $ii)  && !preg_match("!neptonblog!", $ii)) {
                         $iall[] = $ii;
                     }
                 }
