@@ -484,7 +484,7 @@ class adminController extends Controller
 
 
 $thumb = "";
-preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i','<img src="aaa.jpg"> sfsd<img src="asdsad.jpg">', $req->text);
+preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i', $req->text,$matches);
 if (isset($matches[1]) && isset($matches[1][0])) {
  $thumb = $matches[1][0];
 }
@@ -522,7 +522,7 @@ if (isset($matches[1]) && isset($matches[1][0])) {
 
 
 $thumb = "";
-preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i','<img src="aaa.jpg"> sfsd<img src="asdsad.jpg">', $req->text);
+preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i', $req->text,$matches);
 if (isset($matches[1]) && isset($matches[1][0])) {
  $thumb = $matches[1][0];
 }
