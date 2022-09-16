@@ -483,6 +483,11 @@ class adminController extends Controller
 
 
 
+$thumb = "";
+preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i','<img src="aaa.jpg"> sfsd<img src="asdsad.jpg">', $req->text);
+if (isset($matches[1]) && isset($matches[1][0])) {
+ $thumb = $matches[1][0];
+}
 
 
 
@@ -496,6 +501,7 @@ class adminController extends Controller
             'title' => $req->title,
             'tiny_text' => $req->tiny_text,
             'text' => $req->text,
+            'thumb' => $thumb,
             'url' => $req->url
         ]);
 
@@ -514,11 +520,22 @@ class adminController extends Controller
 
         $post = new Post();
 
+
+$thumb = "";
+preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i','<img src="aaa.jpg"> sfsd<img src="asdsad.jpg">', $req->text);
+if (isset($matches[1]) && isset($matches[1][0])) {
+ $thumb = $matches[1][0];
+}
+
+
+
+
         $post->domain_id = getDomainIdByName($domain);
         $post->title = $req->title;
         $post->tiny_text = $req->tiny_text;
         $post->text = $req->text;
         $post->url = $req->url;
+        $post->thumb = $thumb;
 
         $post->save();
 
