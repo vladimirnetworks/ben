@@ -36,7 +36,7 @@ class MainPageController extends Controller
     public function sitemap()
     {
 
-        $posts = post::orderBy('updated_at', 'desc')->limit(1000)->get();
+        $posts = post::orderBy('updated_at', 'desc')->limit(10000)->get();
 
         $blx = [];
        // dd($posts[0]->domain->domain);
