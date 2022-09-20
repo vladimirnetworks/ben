@@ -502,7 +502,8 @@ if (isset($matches[1]) && isset($matches[1][0])) {
             'tiny_text' => $req->tiny_text,
             'text' => $req->text,
             'thumb' => $thumb,
-            'url' => $req->url
+            'url' => $req->url,
+            'ldjson' => $req->ldjson
         ]);
 
 
@@ -535,6 +536,7 @@ if (isset($matches[1]) && isset($matches[1][0])) {
         $post->tiny_text = $req->tiny_text;
         $post->text = $req->text;
         $post->url = $req->url;
+        $post->ldjson = $req->ldjson;
         $post->thumb = $thumb;
 
         $post->save();
