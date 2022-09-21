@@ -269,6 +269,10 @@ class PostController extends start
 
 
 
+        if ($post->ldjson == '{}') {
+            $post->ldjson = null;
+        }
+
 
         // dd(DB::getQueryLog());
 
