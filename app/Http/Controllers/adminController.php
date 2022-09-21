@@ -489,7 +489,12 @@ if (isset($matches[1]) && isset($matches[1][0])) {
  $thumb = $matches[1][0];
 }
 
-
+if ($thumb == "") {
+preg_match_all('/< *video[^>]*poster *= *["\']?([^"\']*)/i', $req->text,$matches);
+if (isset($matches[1]) && isset($matches[1][0])) {
+ $thumb = $matches[1][0];
+}
+}
 
 
         \DB::table('posts')->where([
@@ -528,7 +533,12 @@ if (isset($matches[1]) && isset($matches[1][0])) {
  $thumb = $matches[1][0];
 }
 
-
+if ($thumb == "") {
+preg_match_all('/< *video[^>]*poster *= *["\']?([^"\']*)/i', $req->text,$matches);
+if (isset($matches[1]) && isset($matches[1][0])) {
+ $thumb = $matches[1][0];
+}
+}
 
 
         $post->domain_id = getDomainIdByName($domain);
