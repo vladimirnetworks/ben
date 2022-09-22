@@ -276,8 +276,13 @@ class PostController extends start
 
         // dd(DB::getQueryLog());
 
+        if (strtotime($post->created_at) >= strtotime('2022-08-21 00:08:00')) {
+            $isnew = true;
+        } else {
+            $isnew = false;
+        }
 
-        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "ldjson" => $post->ldjson, "related" => $related, "more" => $posts]);
+        return view("blogs.post", ["post" => $post, "pageTitle" => $post->title, "ldjson" => $post->ldjson, "related" => $related, "more" => $posts, "isnew" => $isnew]);
     }
 
     /**
