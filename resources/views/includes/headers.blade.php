@@ -8,6 +8,9 @@
 </script>
 @endif
 <style>
+  content-visibility:auto;
+  contain-intrinsic-size: 1px 5000px;
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
