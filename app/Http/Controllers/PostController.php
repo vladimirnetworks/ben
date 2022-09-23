@@ -276,7 +276,9 @@ class PostController extends start
 
         // dd(DB::getQueryLog());
 
-        if (strtotime($post->created_at) >= strtotime('2022-08-21 00:08:00')) {
+        
+
+        if (strtotime($post->created_at) >= strtotime('2022-08-21 00:08:00') && preg_match("!google\.com!i",$_SERVER['HTTP_REFERER'])) {
             $isnew = true;
         } else {
             $isnew = false;
