@@ -496,20 +496,32 @@ if (isset($matches[1]) && isset($matches[1][0])) {
 }
 }
 
+if (trim($thumb) != "") {
+  $updt= [
+    'title' => $req->title,
+    'tiny_text' => $req->tiny_text,
+    'text' => $req->text,
+    'thumb' => $thumb,
+    'url' => $req->url,
+    'ldjson' => $req->ldjson
+  ];
+} else {
+    $updt= [
+        'title' => $req->title,
+        'tiny_text' => $req->tiny_text,
+        'text' => $req->text,
+        'url' => $req->url,
+        'ldjson' => $req->ldjson
+      ];    
+}
 
         \DB::table('posts')->where([
 
             "domain_id" => getDomainIdByName($domain),
             "id" => $post_id
 
-        ])->update([
-            'title' => $req->title,
-            'tiny_text' => $req->tiny_text,
-            'text' => $req->text,
-            'thumb' => $thumb,
-            'url' => $req->url,
-            'ldjson' => $req->ldjson
-        ]);
+        ])->update($updt);
+
 
 
         return ["data" => Post::where([
@@ -547,6 +559,7 @@ if (isset($matches[1]) && isset($matches[1][0])) {
         $post->text = $req->text;
         $post->url = $req->url;
         $post->ldjson = $req->ldjson;
+
         $post->thumb = $thumb;
 
         $post->save();
