@@ -19,7 +19,7 @@ class adminController extends Controller
 
         foreach ($posts as $p) {
              
-            if ($p->ldjson) {
+            if ($p->ldjson && preg_match("!thumbnailUrl!i",$p->ldjson)) {
                 echo $p->ldjson;
                 echo "\n";
             } else {
