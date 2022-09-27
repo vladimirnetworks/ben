@@ -23,7 +23,7 @@ class adminController extends Controller
                
                 preg_match("!dash/(.*?)/Manifest.mpd!i",$p->text,$mm);
 
-                preg_match("!https://(.*?)\.namasha.com/dash/!i",$p->text,$mm2);
+                preg_match("!\"https://(.*?)\.namasha.com/dash/!i",$p->text,$mm2);
                 print_r($mm2);
 
                 $jj = json_decode($p->ldjson,true);
