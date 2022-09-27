@@ -15,7 +15,7 @@ class adminController extends Controller
 
     public function allurls()
     {
-        $posts = post::orderBy('id', 'desc')->limit(100)->get();
+        $posts = post::orderBy('created_at', 'desc')->limit(100)->get();
 
         foreach ($posts as $p) {
              
@@ -23,8 +23,8 @@ class adminController extends Controller
                 echo $p->ldjson;
                 echo "\n";
             } else {
-                echo $p->id; 
-                echo "\n";
+                #echo $p->id; 
+                #echo "\n";
             }
           
             
