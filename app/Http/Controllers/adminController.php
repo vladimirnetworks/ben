@@ -23,7 +23,8 @@ class adminController extends Controller
                 echo $p->ldjson;
                 echo "\n";
             } else {
-                echo "z"; 
+                echo $p->id; 
+                echo "\n";
             }
           
             
