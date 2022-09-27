@@ -31,7 +31,7 @@ class adminController extends Controller
                 $jj = json_encode($jj,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                # echo $jj;
                 echo "\n";
-                echo "update `posts` set `ldjson` = '$jj' where `domain_id` = ".$p->domain_id." and id = ".$p->id;
+                echo "update `posts` set `ldjson` = '$jj' where `domain_id` = ".$p->domain_id." and id = ".$p->id." ; ";
             } else {
                 #echo $p->id; 
                 #echo "\n";
