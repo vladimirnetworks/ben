@@ -24,7 +24,7 @@ class adminController extends Controller
                 preg_match("!dash/(.*?)/Manifest.mpd!i",$p->text,$mm);
 
                 preg_match('!src="https://(.*?).namasha.com/dash/.*?/Manifest.mpd"!',$p->text,$mm2);
-                print_r($mm2);
+                #print_r($mm2);
 
                 $jj = json_decode($p->ldjson,true);
                 $jj['contentURL'] = "https://".$mm2[1].".namasha.com/videos/".$mm[1].".mp4";
