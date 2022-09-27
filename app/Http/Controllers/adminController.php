@@ -22,9 +22,11 @@ class adminController extends Controller
             if ($p->ldjson && preg_match("!thumbnailUrl!i",$p->ldjson) && !preg_match("!contentURL!i",$p->ldjson)) {
                
                 preg_match("!dash/(.*?)/Manifest.mpd!i",$p->text,$mm);
-                print_r($mm);
+
+                preg_match("!https:\/\/(.*?).namasha.com/dash/.*?/Manifest.mpd!i",$p->text,$mm2);
+
                 $jj = json_decode($p->ldjson,true);
-                $jj['contentURL'] = "zzz.mp4";
+                $jj['contentURL'] = "https://".$mm2[1].".namasha.com/videos/".$mm[1].".mp4";
                 $jj = json_encode($jj,JSON_UNESCAPED_UNICODE);
                 echo $jj;
                 echo "\n";
