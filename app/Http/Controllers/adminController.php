@@ -530,7 +530,8 @@ if (trim($thumb) != "") {
     'text' => $req->text,
     'thumb' => $thumb,
     'url' => $req->url,
-    'ldjson' => $req->ldjson
+    'ldjson' => $req->ldjson,
+    'metadata' => $req->metadata
   ];
 } else {
     $updt= [
@@ -538,7 +539,8 @@ if (trim($thumb) != "") {
         'tiny_text' => $req->tiny_text,
         'text' => $req->text,
         'url' => $req->url,
-        'ldjson' => $req->ldjson
+        'ldjson' => $req->ldjson,
+        'metadata' => $req->metadata
       ];    
 }
 
@@ -586,6 +588,7 @@ if (isset($matches[1]) && isset($matches[1][0])) {
         $post->text = $req->text;
         $post->url = $req->url;
         $post->ldjson = $req->ldjson;
+        $post->metadata = $req->metadata;
 
         $post->thumb = $thumb;
 
