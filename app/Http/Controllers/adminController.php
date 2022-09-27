@@ -21,7 +21,8 @@ class adminController extends Controller
              
             if ($p->ldjson && preg_match("!thumbnailUrl!i",$p->ldjson) && !preg_match("!contentURL!i",$p->ldjson)) {
                
-                
+                preg_match("!dash/(.*?)/Manifest.mpd!i",$mm);
+                print_r($mm);
                 $jj = json_decode($p->ldjson,true);
                 $jj['contentURL'] = "zzz.mp4";
                 $jj = json_encode($jj,JSON_UNESCAPED_UNICODE);
