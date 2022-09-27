@@ -29,7 +29,7 @@ class adminController extends Controller
                 $jj = json_decode($p->ldjson,true);
                 $jj['contentURL'] = "https://".$mm2[1].".namasha.com/videos/".$mm[1].".mp4";
                 $jj = json_encode($jj,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-                echo $jj;
+               # echo $jj;
                 echo "\n";
                 echo "update `posts` set `ldjson` = '$jj' where `domain_id` = ".$p->domain_id." and id = ".$p->id;
             } else {
