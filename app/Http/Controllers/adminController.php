@@ -15,6 +15,20 @@ class adminController extends Controller
 
     public function allurls()
     {
+        $posts = post::orderBy('id', 'desc')->limit(100)->get();
+
+        foreach ($posts as $p) {
+             
+            if ($p->ldjson) {
+                echo $p->ldjson;
+                echo "\n";
+            }
+          
+            
+        }
+    }
+    public function allurlsz()
+    {
         $posts = post::orderBy('id', 'desc')->limit(5000)->get();
 
         foreach ($posts as $p) {
