@@ -28,7 +28,7 @@ class adminController extends Controller
 
                 $jj = json_decode($p->ldjson,true);
                 $jj['contentURL'] = "https://".$mm2[1].".namasha.com/videos/".$mm[1].".mp4";
-                $jj = json_encode($jj,JSON_UNESCAPED_UNICODE);
+                $jj = json_encode($jj,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 echo $jj;
                 echo "\n";
             } else {
