@@ -19,6 +19,7 @@ class post extends Model
         'thumb',
         'tags',
         'id',
+        'metadata',
         'created_at',
         'updated_at'
 
