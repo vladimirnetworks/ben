@@ -8,10 +8,7 @@
 </script>
 @endif
 <style>
-  body {
-  content-visibility:auto;
-  contain-intrinsic-size: 1px 5000px;
-  }
+
 
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
