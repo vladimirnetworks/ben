@@ -238,7 +238,9 @@ class PostController extends start
             
            });
 
-      
+      setTimeout(function() {
+        jwplayer("b0video-player").play();
+      } , 2000);
 
     </script>';
         return $aa;
