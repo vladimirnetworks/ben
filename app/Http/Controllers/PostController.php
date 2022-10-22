@@ -235,7 +235,7 @@ class PostController extends start
  
 
            setTimeout(function() {
-            jwplayer("b' . $k . 'video-player").setMute(false);
+           // jwplayer("b' . $k . 'video-player").setMute(false);
             
         },5000);      
 
