@@ -239,7 +239,7 @@ class PostController extends start
            });
 
       setTimeout(function() {
-        jwplayer("b0video-player").play();
+        //jwplayer("b0video-player").play();
       } , 2000);
 
     </script>';
