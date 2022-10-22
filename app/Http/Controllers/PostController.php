@@ -217,7 +217,7 @@ class PostController extends start
             
                 "dash": "shaka",
             
-    
+                "autostart": "viewable",
     
       
     
