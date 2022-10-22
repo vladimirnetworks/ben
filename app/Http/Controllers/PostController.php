@@ -217,7 +217,7 @@ class PostController extends start
             
                 "dash": "shaka",
             
-                "autostart": "viewable",
+               
     
       
     
@@ -232,14 +232,10 @@ class PostController extends start
     
     
 
-           jwplayer("b' . $k . 'video-player").on(\'play\', function () {
-            jwplayer("b' . $k . 'video-player").setMute(false);
-            setTimeout(function() {
+        setTimeout(function() {
                 
-                console.log(jwplayer("b' . $k . 'video-player").play());
-            },2000);
-            
-           });
+            console.log(jwplayer("b' . $k . 'video-player").play());
+        },5000);
 
            
 
