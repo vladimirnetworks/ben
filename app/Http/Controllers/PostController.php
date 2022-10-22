@@ -233,9 +233,10 @@ class PostController extends start
     
 
            jwplayer("b' . $k . 'video-player").on(\'play\', function () {
-            setTimeout(function() {
+            
                 jwplayer("b' . $k . 'video-player").setMute(false)
-            },2000);
+                jwplayer("b' . $k . 'video-player").play();
+            
             
            });
 
