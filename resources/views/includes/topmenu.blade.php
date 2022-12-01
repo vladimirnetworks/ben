@@ -40,7 +40,7 @@
 
 
     <div id="mbmag" class="col-1 text-center ham ml-4 d-lg-none" onClick="srchm()">
-      <img src="https://www.behkiana.ir/icons/mag.png?" style="width:3rem">
+      <img src="https://www.benham.ir/icons/mag.png?" style="width:3rem">
     </div>
 
 
@@ -51,7 +51,7 @@
 
         <form id="frm1"  style="align-items: center;display: flex;" class="col mr-1" method="post" action="https://www.benham.ir/search"> <input id="srchboxm" name="qsearch" class="" placeholder="جستجو ..."
           style="border:0px;outline: none;width:100%;background-color: transparent;" />  {{ csrf_field() }}</form>
-        <img onClick="document.getElementById('frm0').submit()" src="https://www.behkiana.ir/icons/mag.png?" style="height:100%">
+        <img onClick="document.getElementById('frm0').submit()" src="https://www.benham.ir/icons/mag.png?" style="height:100%">
 
       </div>
     </div>
