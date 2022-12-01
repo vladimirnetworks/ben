@@ -31,7 +31,7 @@
           <form id="frm0" method="post" action="https://www.benham.ir/search" style="display: inherit;width:90%">
             {{ csrf_field() }}
             <input  name="qsearch" style="height: 80%;width:90%;border:0px;outline:0px;font-size:1rem" placeholder="جستجو ..." /></form>
-           <img onClick="document.getElementById('frm0').submit()" src="https://www.behkiana.ir/icons/mag.png?" style="height: 80%" />
+           <img onClick="document.getElementById('frm0').submit()" src="https://www.benham.ir/icons/mag.png?" style="height: 80%" />
           </div>
         </div>
 
